@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{packages}
+\usepackage{pdfpages}
+\newcommand{\blankpage}{%
+  \clearpage
+  \thispagestyle{empty}
+  \null
+  \clearpage
+}
+
+\title{Bachelorprosjekt - D4}
+\author{Alisina Rahimian \\
+        Markus Ebbesen \\
+        Paolo Stephen Ramognini}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\newpage \tableofcontents \newpage
+\import{./Sections/}{Introduction} \clearpage
+\import{./Sections/}{Theoretical Background} \clearpage
+\import{./Sections/}{Research Methodology} \clearpage
+\import{./Sections/}{Overview of Risk Management Tools} \clearpage
+\import{./Sections/}{Practical Evaluation of Selected Tools} \clearpage
+\import{./Sections/}{Comparative Analysis} \clearpage
+\import{./Sections/}{Conclusion} \clearpage
+
+\newpage
+\printbibliography[heading = bibintoc, title = Bibliography] 
+
+\import{./Appendices/}{Appendices}
+
+\end{document}

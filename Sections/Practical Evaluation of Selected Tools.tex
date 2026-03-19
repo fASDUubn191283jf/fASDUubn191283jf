@@ -1,0 +1,131 @@
+\section{Practical Evaluation of Selected Tools}
+
+\subsection{OpenRMF OSS}
+\subsubsection{Tool Overview}
+OpenRMF OSS is a web-based, open-source tool designed to support the implementation of the \textbf{NIST Risk Management Framework (RMF)} in U.S. Department of Defense–oriented environments. The tool focuses on managing and organizing security assessment artifacts such as \textbf{DISA STIG checklists}, \textbf{SCAP scan results}, and \textbf{Nessus/ACAS data}, providing a centralized platform for tracking compliance and security findings across systems.
+
+The application is distributed as a \textbf{containerized solution} and can be deployed locally or in server, virtualized, or cloud environments. OpenRMF OSS enables users to consolidate assessment data into a single source of truth, track vulnerability status, and generate RMF-related outputs such as \textbf{Plan of Action and Milestones (POA\&M)}, \textbf{Risk Assessment Reports (RAR)}, and test plan summaries. Its primary emphasis is on \textbf{compliance tracking, documentation, and audit readiness}, rather than on advanced or quantitative risk modeling.
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Risk BowTie}
+\subsubsection{Tool Overview}
+Risk BowTie is a risk analysis approach and supporting tool centered on the \textbf{bowtie diagram}, which provides a structured visual representation of risk scenarios. The diagram places a \textbf{top event} at the center, with \textbf{threats and preventive controls} visualized on the left side, and \textbf{consequences and mitigative controls} on the right. This structure allows causal relationships between events and controls to be communicated clearly in a single, intuitive model.
+
+The primary purpose of Risk BowTie is to support \textbf{risk understanding, communication, and control mapping}, rather than detailed risk quantification. It is particularly useful in workshops, risk assessments, and safety-critical or operational contexts where stakeholder alignment and clarity are essential. While the approach enables systematic identification of controls and escalation factors, it does not natively provide \textbf{quantitative risk scoring, asset-based risk registers, or compliance artifact generation}. As a result, Risk BowTie is best suited as a complementary risk analysis and visualization method alongside broader GRC or RMF-oriented tools. 
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{SimpleRisk Core}
+\subsubsection{Tool Overview}
+SimpleRisk Core is a free and open-source \textbf{Governance, Risk, and Compliance (GRC)} platform intended to support organizations in establishing a foundational risk management capability. Unlike tools primarily focused on regulatory compliance automation, SimpleRisk Core emphasizes \textbf{risk identification, tracking, and mitigation planning} through a centralized risk register and configurable workflows.
+
+The platform supports core GRC functions including governance structure definition, qualitative risk assessment, compliance testing, and reporting. Users can define custom frameworks, controls, and risk criteria, enabling alignment with commonly used standards such as \textbf{NIST SP 800-171}, \textbf{CIS Critical Security Controls}, \textbf{PCI DSS}, and \textbf{HIPAA}. SimpleRisk Core also includes basic asset management and assessment features, allowing risks to be associated with organizational assets, teams, and locations.
+
+SimpleRisk Core is designed to be \textbf{highly configurable} and accessible for smaller organizations or early-stage GRC programs. However, its risk analysis capabilities are primarily \textbf{qualitative}, and it lacks advanced automation, integration depth, and formal RMF artifact generation found in more compliance-oriented or enterprise-focused solutions. As such, the tool is best suited for organizations seeking an entry-level, open-source platform for structured risk tracking rather than comprehensive regulatory compliance management.
+
+\subsubsection{Installation}
+I downloaded a \href{https://services.simplerisk.com/?type=ova&release=20250828-001}{VM image} from their website, and imported it in VirtualBox.
+The \href{https://raw.githubusercontent.com/simplerisk/documentation/master/INSTALL\%20SIMPLERISK\%20AS\%20A\%20VIRTUALBOX\%20APPLIANCE.pdf}{installation documentation} provided the login information of the VM:
+\begin{itemize}
+    \item user: simplerisk
+    \item password: simplerisk
+\end{itemize}
+The documentation also recommends changing the default password using the \texttt{passwd} command, which I did; \texttt{risksimple}
+
+I typed the \texttt{ip addr} command to get the IPv4 address of the VM, then entered: \texttt{https://<IP ADDR>} into my browser, which took me to an \texttt{Admin account creation} page.
+
+I created an account with the following (not so secure) credentials:
+\begin{itemize}
+    \item user: admin
+    \item password: admin
+\end{itemize}
+
+\subsection{Overview}
+Once logged in, I am met with an Overview page, and a sidebar-menu used for navigating the tools and settings available on the platform. \\ \\
+
+% TODO: INSERT SCREENSHOT HERE % 
+** INSERT SCREENSHOT HERE **
+
+As seen in the screenshot above, the sidebar has the following sections, all with their own subsections:
+\begin{itemize}
+    \item Governance
+    \item Risk Management
+    \item Compliance
+    \item Asset Management
+    \item Artificial Intelligence
+    \item Assessment
+    \item Reporting
+    \item Configure
+\end{itemize}
+
+To get a better overview of the platform and what it has to offer, I will go through each section one by one, starting at the top.
+
+\subsubsection{Governance}
+The governance section has 3 subsections/pages.
+The \texttt{Define Control Frameworks} page allows the user to create and manage frameworks and controls. The platform offers the Compliance Forge SCF, which is a common control framework containing 875 controls mapped to 148 frameworks (ref: % TODO: add reference https://simplerisk.freshdesk.com/support/solutions/articles/6000257997 % )
+for free by registering the SimpleRisk Instance.
+
+The \texttt{Document Program} page allows users to store their organizations policies, guidelines, and procedures. It allows for keeping up with multiple versions over time as well as keeping up with review and approval processes.
+
+The \texttt{Define Exceptions} page allows the user to ... 
+
+\subsubsection{Risk Management}
+a
+\subsubsection{Compliance}
+a
+\subsubsection{Asset Management}
+a
+\subsubsection{Artificial Intelligence}
+a
+\subsubsection{Reporting}
+a
+\subsubsection{Configure}
+a
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Tool 4}
+\subsubsection{Tool Overview}
+% TODO
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Tool 5}
+\subsubsection{Tool Overview}
+% TODO
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Tool 6}
+\subsubsection{Tool Overview}
+% TODO
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Tool 7}
+\subsubsection{Tool Overview}
+% TODO
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Tool 8}
+\subsubsection{Tool Overview}
+% TODO
+
+\subsubsection{Standards and Framework support}
+% TODO
+
+\subsection{Tool 9}
+\subsubsection{Tool Overview}
+% TODO
+
+\subsubsection{Standards and Framework support}
+% TODO
