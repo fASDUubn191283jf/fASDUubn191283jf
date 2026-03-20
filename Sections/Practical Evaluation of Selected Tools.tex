@@ -6,96 +6,694 @@ OpenRMF OSS is a web-based, open-source tool designed to support the implementat
 
 The application is distributed as a \textbf{containerized solution} and can be deployed locally or in server, virtualized, or cloud environments. OpenRMF OSS enables users to consolidate assessment data into a single source of truth, track vulnerability status, and generate RMF-related outputs such as \textbf{Plan of Action and Milestones (POA\&M)}, \textbf{Risk Assessment Reports (RAR)}, and test plan summaries. Its primary emphasis is on \textbf{compliance tracking, documentation, and audit readiness}, rather than on advanced or quantitative risk modeling.
 
-\subsubsection{Standards and Framework support}
-% TODO
+Table~\ref{tab:openrmf-overview} summarizes the key properties of OpenRMF OSS.
 
-\subsection{Risk BowTie}
-\subsubsection{Tool Overview}
-Risk BowTie is a risk analysis approach and supporting tool centered on the \textbf{bowtie diagram}, which provides a structured visual representation of risk scenarios. The diagram places a \textbf{top event} at the center, with \textbf{threats and preventive controls} visualized on the left side, and \textbf{consequences and mitigative controls} on the right. This structure allows causal relationships between events and controls to be communicated clearly in a single, intuitive model.
-
-The primary purpose of Risk BowTie is to support \textbf{risk understanding, communication, and control mapping}, rather than detailed risk quantification. It is particularly useful in workshops, risk assessments, and safety-critical or operational contexts where stakeholder alignment and clarity are essential. While the approach enables systematic identification of controls and escalation factors, it does not natively provide \textbf{quantitative risk scoring, asset-based risk registers, or compliance artifact generation}. As a result, Risk BowTie is best suited as a complementary risk analysis and visualization method alongside broader GRC or RMF-oriented tools. 
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{4.5cm}|p{9cm}|}
+\hline
+\textbf{Property} & \textbf{Description} \\
+\hline
+Version (evaluated) & TODO \\
+\hline
+License & TODO \\
+\hline
+Deployment & TODO \\
+\hline
+Interface type & TODO \\
+\hline
+Primary function & TODO \\
+\hline
+Risk analysis type & TODO \\
+\hline
+Asset management & TODO \\
+\hline
+Threat / vulnerability catalogues & TODO\\
+\hline
+Workflow and traceability & TODO \\
+\hline
+Reporting & TODO \\
+\hline
+Visualisation & TODO \\
+\hline
+Framework alignment & TODO \\
+\hline
+Integrations & TODO \\
+\hline
+Learning curve & TODO \\
+\hline
+Documentation / maturity & TODO \\
+\hline
+Community support & TODO \\
+\hline
+Target organisation size & TODO \\
+\hline
+\end{tabular}
+\caption{OpenRMF OSS -- key properties overview}
+\label{tab:openrmf-overview}
+\end{table}
 
 \subsubsection{Standards and Framework support}
 % TODO
 
 \subsection{SimpleRisk Core}
+
 \subsubsection{Tool Overview}
-SimpleRisk Core is a free and open-source \textbf{Governance, Risk, and Compliance (GRC)} platform intended to support organizations in establishing a foundational risk management capability. Unlike tools primarily focused on regulatory compliance automation, SimpleRisk Core emphasizes \textbf{risk identification, tracking, and mitigation planning} through a centralized risk register and configurable workflows.
 
-The platform supports core GRC functions including governance structure definition, qualitative risk assessment, compliance testing, and reporting. Users can define custom frameworks, controls, and risk criteria, enabling alignment with commonly used standards such as \textbf{NIST SP 800-171}, \textbf{CIS Critical Security Controls}, \textbf{PCI DSS}, and \textbf{HIPAA}. SimpleRisk Core also includes basic asset management and assessment features, allowing risks to be associated with organizational assets, teams, and locations.
+SimpleRisk Core is a free, open-source Governance, Risk, and Compliance (GRC) platform
+designed to give organisations a structured starting point for information security risk
+management. The platform is web-based and GUI-driven, presenting all functionality through
+a browser interface organised into clearly labelled sidebar modules. It does not require
+command-line interaction during normal use; after initial deployment, all configuration,
+risk entry, and reporting is performed through the web UI.
 
-SimpleRisk Core is designed to be \textbf{highly configurable} and accessible for smaller organizations or early-stage GRC programs. However, its risk analysis capabilities are primarily \textbf{qualitative}, and it lacks advanced automation, integration depth, and formal RMF artifact generation found in more compliance-oriented or enterprise-focused solutions. As such, the tool is best suited for organizations seeking an entry-level, open-source platform for structured risk tracking rather than comprehensive regulatory compliance management.
+The tool is distributed as a pre-built virtual machine image, which simplifies deployment
+in test and small-production environments. It can also be installed manually on a Linux
+server with a standard LAMP stack. SimpleRisk Core is available at no cost, while
+advanced features such as extended integrations, enhanced reporting, and additional
+compliance frameworks are offered through paid add-on modules.
+
+The platform centres on a \textit{risk register} where risks are submitted, assigned to
+owners, scored using configurable scoring methodologies, and tracked through a mitigation
+and review workflow. Supporting modules cover governance documentation, compliance
+testing, asset management, and reporting. An artificial intelligence module is listed in
+the interface, though its capabilities in the Core (free) tier are limited.
+
+Table~\ref{tab:simplerisk-overview} summarizes the key properties of SimpleRisk Core.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{4.5cm}|p{9cm}|}
+\hline
+\textbf{Property} & \textbf{Description} \\
+\hline
+Version (evaluated) & 20260302-001 \\
+\hline
+License & Open-source (free Core tier; paid add-on modules available) \\
+\hline
+Deployment & Self-hosted; VM image (VirtualBox/VMware) or manual install \\
+\hline
+Interface type & Web-based GUI (browser); no CLI required for normal use \\
+\hline
+Primary function & Risk register, risk scoring, mitigation tracking, compliance testing \\
+\hline
+Risk analysis type & Qualitative and semi-quantitative; six scoring methodologies: Classic, CVSS, DREAD, OWASP, Custom, and Contributing Risk \\
+\hline
+Asset management & Basic; assets can be defined and linked to risks \\
+\hline
+Threat / vulnerability catalogues & Not built-in; risks and threats are entered manually \\
+\hline
+Workflow and traceability & Structured submission, mitigation, and review workflow; risk history and audit log maintained \\
+\hline
+Reporting & Built-in reports and dashboards; PDF/CSV export \\
+\hline
+Visualisation & Basic charts and dashboards within the reporting module \\
+\hline
+Framework alignment & Adaptable to ISO/IEC 27005 and NIST RMF intent; compliance frameworks via Compliance Forge SCF \\
+\hline
+Integrations & REST API available; no native SIEM, CMDB, or ticketing integrations in Core tier \\
+\hline
+Learning curve & Low to moderate; GUI is logically structured and does not require technical expertise \\
+\hline
+Documentation / maturity & Official documentation available at simplerisk.com; active community forum \\
+\hline
+Community support & Open community forum; GitHub repository publicly accessible \\
+\hline
+Target organisation size & Small to medium-sized organisations; early-stage GRC programmes \\
+\hline
+\end{tabular}
+\caption{SimpleRisk Core -- key properties overview}
+\label{tab:simplerisk-overview}
+\end{table}
 
 \subsubsection{Installation}
-I downloaded a \href{https://services.simplerisk.com/?type=ova&release=20250828-001}{VM image} from their website, and imported it in VirtualBox.
-The \href{https://raw.githubusercontent.com/simplerisk/documentation/master/INSTALL\%20SIMPLERISK\%20AS\%20A\%20VIRTUALBOX\%20APPLIANCE.pdf}{installation documentation} provided the login information of the VM:
+
+The evaluated instance was deployed using the official VM image imported into VirtualBox.
+After import, the VM was started and the IPv4 address was retrieved using \texttt{ip addr}.
+The web interface was then accessible at \texttt{https://<IP>}, where an administrator
+account was created on first login. The setup process required no manual server
+configuration, making initial deployment straightforward for users without a Linux
+administration background. The default VM credentials are publicly documented, so
+changing them immediately after deployment is a necessary first step before any
+meaningful use.
+
+\subsubsection{Platform Modules}
+\label{sec:simplerisk-modules}
+SimpleRisk Core organises its functionality into the following main modules, accessible
+from the left-hand sidebar.
+
+\paragraph{Governance}
+The Governance module provides tools for defining and managing the control frameworks
+and policy documentation that underpin a risk management programme. Users can import
+or define control frameworks and map controls to risks assessed elsewhere in the platform.
+Policy documents such as information security policies and procedures can be stored and
+versioned within the tool, supporting traceability of governance decisions over time.
+Exception handling is also available, allowing deviations from controls to be formally
+recorded and tracked.
+
+\paragraph{Risk Management}
+The Risk Management module is the operational core of the platform. Risks are submitted
+through a structured form and stored in a central risk register. Each risk entry can be
+assigned an owner, linked to an asset, given a scoring value, and associated with a
+mitigation plan and review schedule. The platform supports six scoring methodologies:
+Classic, CVSS, DREAD, OWASP, Custom, and Contributing Risk. Risks progress through a
+defined workflow from submission through mitigation planning to periodic management
+review, providing a basic but functional level of process support and auditability.
+
+\paragraph{Compliance}
+The Compliance module supports structured testing of controls against selected frameworks.
+Through integration with the Compliance Forge SCF (available for free upon registering
+the SimpleRisk instance), users gain access to a large library of controls mapped to
+multiple recognised frameworks. Compliance test results can be recorded and tracked,
+offering a degree of audit readiness. The depth of compliance automation is limited in
+the Core tier compared to commercial GRC platforms.
+
+\paragraph{Asset Management}
+The Asset Management module allows organisations to define and catalogue their information assets, which can then be referenced when submitting risks. This enables a basic level of asset-centric risk tracking. Assets can be added manually through a form, or discovered automatically using the built-in Automated Discovery feature, which scans a specified IP range and adds live hosts to the asset list. The module does not provide integration with configuration management databases (CMDBs), so assets outside the network scope, such
+as cloud services, must still be entered manually.
+
+\paragraph{Artificial Intelligence}
+The Artificial Intelligence module consists of two pages: \textit{Recommendations} and
+\textit{Document Installation}. The Recommendations page allows SimpleRisk to generate
+risk recommendations by connecting to Anthropic's API, which requires an administrator
+to supply a valid Anthropic API key. This means the feature incurs external usage costs
+and is not self-contained within the Core tier. The Document Installation page offers
+one-click installation of policy and procedure document templates, but this functionality
+is locked behind the paid Artificial Intelligence Extra add-on. In practice, the AI
+module provides no usable functionality out of the box in the Core tier and is better
+understood as a commercial upsell point than a core feature.
+
+\paragraph{Reporting}
+The Reporting module provides a set of pre-built reports and dashboards covering the
+current risk landscape, mitigation status, and compliance posture. Reports can be
+exported to PDF or CSV format, which supports sharing findings with stakeholders and
+satisfies basic documentation requirements. Visualisation is limited to simple charts
+and summary tables within the dashboard; the tool does not offer advanced or interactive
+risk visualisation such as heat maps or bowtie diagrams.
+
+\paragraph{Configure}
+The Configure module provides administrative and scoring configuration options for the
+platform. The most relevant of these for risk analysis is the Configure Risk Formula
+page, which contains three tabs.
+
+The Risk Levels tab defines the score boundaries and colour representation for the four
+default risk levels: Low, Medium, High, and Critical. Both the thresholds and colours
+can be edited freely. However, the number of levels is fixed; it is not possible to add
+or remove levels from this tab.
+
+The Classic Risk Formula tab presents a fully configurable likelihood/impact matrix.
+Unlike the Risk Levels tab, this view includes add and remove controls for both the
+likelihood and impact axes, meaning the matrix dimensions can be expanded or reduced to
+fit the organisation's needs. Labels and numeric values for each level can also be
+edited individually.
+
+The Contributing Risk Formula tab takes a different approach. Likelihood levels are
+configurable with add and delete options, similar to the Classic formula. Impact is
+calculated as a weighted sum across a set of named subjects, with Safety, SLA,
+Financial, and Reputation provided by default, each assigned a weight of 0.25. Both
+the subjects and their weights can be modified, and new subjects can be added, allowing
+the impact calculation to reflect the organisation's specific priorities.
+
+\subsubsection{Standards and Framework Support}
+
+SimpleRisk Core does not explicitly implement a single named framework such as ISO/IEC
+27005 or the NIST Risk Management Framework as a structured workflow. Instead, it
+provides a flexible risk register and scoring environment that can be adapted to support
+the intent of these frameworks without enforcing their specific terminology or process
+steps.
+
+The platform's qualitative scoring approach, using likelihood and impact estimates to
+derive a risk score, is broadly consistent with the risk assessment process described
+in ISO/IEC 27005, though the tool does not guide users through the full context
+establishment, asset valuation, and threat/vulnerability identification steps that the
+standard prescribes. The risk register and mitigation tracking workflow can be used to
+support the risk treatment and monitoring phases common to both ISO/IEC 27005 and the
+NIST RMF, but the tool does not enforce or document compliance with those frameworks
+in a verifiable way.
+
+OCTAVE and FAIR are not directly supported. The platform lacks built-in threat catalogues
+or the structured asset-profile approach central to OCTAVE, and it does not offer the
+probabilistic, financially-quantified risk modelling that FAIR requires. EBIOS Risk
+Manager, which structures risk analysis around feared events and attack scenarios, is
+similarly not reflected in the platform's workflow or terminology.
+
+The strongest area of standards alignment is compliance framework mapping via the
+Compliance Forge SCF, which covers a broad range of recognised frameworks including
+NIST SP 800-171, CIS Critical Security Controls, PCI DSS, and HIPAA. This makes
+SimpleRisk Core more suitable as a compliance tracking tool than as a framework-driven
+risk analysis platform.
+
+In summary, SimpleRisk Core is best characterised as a flexible, framework-agnostic
+risk register with compliance support. Its alignment with established risk management
+standards depends significantly on how the organisation configures and uses the tool,
+rather than being enforced by the platform itself.
+
+\subsubsection{Scenario Walkthrough -- Small Enterprise}
+\label{sec:simplerisk-walkthrough-small}
+
+To evaluate SimpleRisk Core in a practical context, the NordKonsult AS scenario described in Section~\ref{sec:scenario-small} was applied to the platform. This walkthrough documents the process of configuring the tool, entering scenario data, and generating
+outputs. Each step is accompanied by observations relevant to the evaluation criteria defined in Section~\ref{sec:eval-criteria}.  % TODO: Link to eval section
+
+% -----------------------------------------------------------------------------
+% Step 1: Configuration
+% -----------------------------------------------------------------------------
+
+\paragraph{Risk Scoring Configuration.}
+Before entering scenario data, the risk scoring configuration was adjusted to align with the NordKonsult scenario. The Configure Risk Formula page was used for this purpose,
+as described in Section~\ref{sec:simplerisk-modules}. The Risk Levels tab was used to
+adjust the score thresholds to match the boundaries defined in the scenario, as shown in Figure~\ref{fig:simplerisk-risklevels}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Risk levels.png}
+    \caption{Adjusted risk level thresholds for the NordKonsult scenario}
+    \label{fig:simplerisk-risklevels}
+\end{figure}
+
+The Classic Risk Formula tab was used to define the likelihood and impact levels for the scenario, as shown in Figure~\ref{fig:simplerisk-classicformula}. The Contributing Risk
+Formula was not used for this scenario, as the Classic scoring approach was sufficient
+for the qualitative assessment required.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{classic_risk_formula.png}
+    \caption{Classic Risk Formula matrix configured for the NordKonsult scenario}
+    \label{fig:simplerisk-classicformula}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{contributing_risk_formula.png}
+    \caption{Contributing Risk Formula configuration}
+    \label{fig:simplerisk-contributingformula}
+\end{figure}
+
+% -----------------------------------------------------------------------------
+% Step 2: Asset Registration
+% -----------------------------------------------------------------------------
+
+\paragraph{Asset Registration.}
+The eight assets identified in Table~\ref{tab:nordkonsult-assets} were registered in the
+platform via \texttt{Asset Management > Manage Assets}. The Add Asset form contains the following fields:
+ 
 \begin{itemize}
-    \item user: simplerisk
-    \item password: simplerisk
+    \item \textbf{Asset Name} (required): the name of the asset.
+    \item \textbf{Asset Valuation} (required): a dropdown menu with predefined monetary
+          ranges from \$0 to \$1,000,000 in increments of \$100,000.
+    \item \textbf{IP Address}: an optional field for network-based assets.
+    \item \textbf{Site/Location}: a dropdown with predefined location options,
+          configurable via \texttt{Configure > Add or Remove Values}.
+    \item \textbf{Team}: a dropdown with predefined team options, also configurable
+          via \texttt{Configure > Add or Remove Values}.
+    \item \textbf{Asset Details}: a rich text field for additional descriptive
+          information about the asset.
+    \item \textbf{Mapped Controls}: controls from defined frameworks can be linked
+          directly to the asset at registration time.
+    \item \textbf{Tags}: free-text tags for grouping or filtering assets.
+    \item \textbf{Associated Risks}: existing risks can be linked to the asset
+          at registration time.
 \end{itemize}
-The documentation also recommends changing the default password using the \texttt{passwd} command, which I did; \texttt{risksimple}
+ 
+For the NordKonsult scenario, only the mandatory fields and the most relevant optional
+fields were populated. Since the scenario defines asset criticality qualitatively rather
+than in financial terms, the Asset Valuation field required a manual mapping. The
+following ranges were used: High-criticality assets (A-01, A-02, A-06) were assigned
+\$800,001 to \$900,000; medium-criticality assets (A-03, A-04, A-08) were assigned
+\$400,001 to \$500,000; and low-criticality assets (A-05, A-07) were assigned
+\$0 to \$100,000. This mapping was defined by the evaluator for consistency and does
+not reflect actual financial valuations.
+ 
+Table~\ref{tab:simplerisk-assets} summarises how the NordKonsult assets were registered.
+ 
+\begin{table}[ht]
+\centering
+\caption{Asset registration in SimpleRisk Core -- NordKonsult AS}
+\label{tab:simplerisk-assets}
+\small
+\begin{tabular}{lllll}
+\hline
+\textbf{ID} & \textbf{Asset Name} & \textbf{Valuation Range} & \textbf{Location} & \textbf{Team} \\
+\hline
+A-01 & Microsoft 365 Tenant          & \$800,001--\$900,000 & Cloud            & IT \\
+A-02 & Client Project Data           & \$800,001--\$900,000 & Cloud            & Management \\
+A-03 & CRM System (HubSpot)          & \$400,001--\$500,000 & Cloud            & Management \\
+A-04 & Employee Laptops (18x)        & \$400,001--\$500,000 & Trondheim Office & IT \\
+A-05 & On-Premise NAS                & \$0--\$100,000       & Trondheim Office & IT \\
+A-06 & Accounting System (Tripletex) & \$800,001--\$900,000 & Cloud            & Management \\
+A-07 & Company Website               & \$0--\$100,000       & Cloud            & IT \\
+A-08 & Network Equipment             & \$400,001--\$500,000 & Trondheim Office & IT \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{simplerisk-registered-assets.png}
+    \caption{Manage Assets page showing added assets}
+    \label{fig:simplerisk-registered-assets}
+\end{figure}
+ 
+\textit{Observation:} SimpleRisk's asset management module provides basic but functional
+support for asset registration. The form covers the most relevant fields for risk
+management purposes, and the ability to map controls and link risks directly at
+registration time supports traceability from the outset. However, the Asset Valuation
+field uses a monetary range dropdown, which does not map naturally to qualitative
+criticality scales commonly used in frameworks such as ISO~27005. Organizations that
+assess asset value in financial terms will find this straightforward, but those working
+with qualitative classifications will need to define their own mapping convention, as
+was done here. The automated discovery feature is useful for network-based assets, but
+cloud-hosted assets must still be entered manually, which is a relevant limitation for
+organizations with mixed or predominantly cloud-based environments.
 
-I typed the \texttt{ip addr} command to get the IPv4 address of the VM, then entered: \texttt{https://<IP ADDR>} into my browser, which took me to an \texttt{Admin account creation} page.
+% -----------------------------------------------------------------------------
+% Step 3: Control Definition
+% -----------------------------------------------------------------------------
 
-I created an account with the following (not so secure) credentials:
+\paragraph{Control Definition.}
+The proposed controls from Table~\ref{tab:nordkonsult-controls} were entered in the
+Governance module under \texttt{Governance > Define Control Frameworks}. A custom
+framework named ``NordKonsult Controls'' was created, and each proposed control was
+added as a control entry within this framework. The Add Control form contains the
+following fields:
+ 
 \begin{itemize}
-    \item user: admin
-    \item password: admin
+    \item \textbf{Control Short Name} (required): a concise label for the control
+          (e.g., ``Enable MFA on Microsoft 365'').
+    \item \textbf{Control Long Name}: an optional expanded name for the control.
+    \item \textbf{Control Description}: a rich text field for describing the control's
+          purpose and scope.
+    \item \textbf{Supplemental Guidance}: an additional rich text field for
+          implementation notes or references.
+    \item \textbf{Control Owner}: a dropdown for assigning responsibility.
+    \item \textbf{Control Class}: Technical, Operational, or Management.
+    \item \textbf{Control Phase}: a dropdown covering both traditional categories
+          (Physical, Procedural, Technical, Legal and Regulatory or Compliance) and
+          NIST CSF function names (Govern, Protect, Identify, Detect, Recover, Respond).
+    \item \textbf{Control Priority}: P0 through P3.
+    \item \textbf{Current Control Maturity} and \textbf{Desired Control Maturity}:
+          both use a six-level scale of Not Performed, Performed, Documented, Managed,
+          Reviewed, and Optimizing.
+    \item \textbf{Control Status}: Pass or Fail. This field is not configurable.
+    \item \textbf{Mitigation Percent}: a numeric field indicating how much the control
+          contributes to mitigating the associated risk.
+    \item \textbf{Mapped Control Frameworks}: allows the control to be linked to one
+          or more defined frameworks.
+    \item \textbf{Mapped Assets}: allows the control to be associated with specific
+          assets.
 \end{itemize}
+ 
+For the NordKonsult scenario, each control was given a short name, a brief description, and an owner. Current Control Maturity was set to ``Not Performed'' and Control Status was set to ``Fail'' to reflect that none of the proposed controls were in place at the start of the scenario. Each control was also mapped to the ``NordKonsult Controls'' framework via the Mapped Control Frameworks field.
+ 
+SimpleRisk also offers the Compliance Forge Secure Controls Framework (SCF), which provides a pre-built library of 875 controls mapped to 148 frameworks. While this library was examined during the evaluation, the NordKonsult scenario used custom controls to better test the tool's flexibility in handling organization-specific risk treatments.
+ 
+% TODO: INSERT SCREENSHOT: Governance > Define Control Frameworks showing the custom framework
+ 
+\textit{Observation:} The control form in SimpleRisk is more comprehensive than it initially appears. The inclusion of both Current and Desired Control Maturity using a six-level scale, which resembles a capability maturity model, allows organizations to track not just whether a control exists, but how well it is implemented and where they
+want it to be. This is a useful feature that goes beyond the simple pass/fail status and supports more nuanced governance reporting. The Control Phase field is also notable, as its inclusion of NIST CSF function names (Govern, Protect, Identify, Detect, Recover, Respond) suggests a degree of alignment with that framework out of the box. However, the platform does not provide direct mapping to Norwegian-specific frameworks such as NSM's \textit{Grunnprinsipper for IKT-sikkerhet}, which would need to be created
+manually. The bundled SCF library is a useful starting point for organizations seeking alignment with international standards, but its breadth may be overwhelming for a small organization like NordKonsult.
 
-\subsection{Overview}
-Once logged in, I am met with an Overview page, and a sidebar-menu used for navigating the tools and settings available on the platform. \\ \\
+% -----------------------------------------------------------------------------
+% Step 4: Risk Submission
+% -----------------------------------------------------------------------------
 
-% TODO: INSERT SCREENSHOT HERE % 
-** INSERT SCREENSHOT HERE **
+\paragraph{Risk Submission.}
+The eight risks from Table~\ref{tab:nordkonsult-risks} were entered via
+\texttt{Risk Management > Submit Risk}. For each risk, the submission form was populated
+with the following information:
 
-As seen in the screenshot above, the sidebar has the following sections, all with their own subsections:
 \begin{itemize}
-    \item Governance
-    \item Risk Management
-    \item Compliance
-    \item Asset Management
-    \item Artificial Intelligence
-    \item Assessment
-    \item Reporting
-    \item Configure
+    \item \textbf{Subject:} a concise description of the risk scenario (e.g.,
+          ``Phishing attack compromises Microsoft 365 accounts'').
+    \item \textbf{Risk Scoring Method:} set to Classic for all risks.
+    \item \textbf{Likelihood and Impact:} scored according to the values in
+          Table~\ref{tab:nordkonsult-risks}.
+    \item \textbf{Category:} assigned to a threat category (e.g., ``Social
+          Engineering'', ``Malware'', ``Data Breach'').
+    \item \textbf{Owner:} set to the responsible role within NordKonsult.
+    \item \textbf{Affected Assets:} linked to the relevant assets registered in Step 2.
+    \item \textbf{Notes:} a description of the risk scenario including the underlying
+          vulnerability and potential consequences.
 \end{itemize}
 
-To get a better overview of the platform and what it has to offer, I will go through each section one by one, starting at the top.
+To illustrate the process, the following provides detail on how three representative
+risks were submitted.
 
-\subsubsection{Governance}
-The governance section has 3 subsections/pages.
-The \texttt{Define Control Frameworks} page allows the user to create and manage frameworks and controls. The platform offers the Compliance Forge SCF, which is a common control framework containing 875 controls mapped to 148 frameworks (ref: % TODO: add reference https://simplerisk.freshdesk.com/support/solutions/articles/6000257997 % )
-for free by registering the SimpleRisk Instance.
+\subparagraph{R-01: Phishing Attack.}
+This risk was assigned a likelihood of 4 (Likely) and an impact of 4 (Major), resulting
+in a risk score of 16 (Critical). The affected assets were set to Microsoft 365 Tenant
+(A-01), Client Project Data (A-02), and Employee Laptops (A-04). The risk description
+noted that employees may fall victim to phishing emails due to the absence of recurring
+security awareness training, and that multi-factor authentication is not enforced across
+all accounts. A successful phishing attack could result in unauthorised access to email,
+client data, and internal communications.
 
-The \texttt{Document Program} page allows users to store their organizations policies, guidelines, and procedures. It allows for keeping up with multiple versions over time as well as keeping up with review and approval processes.
+\subparagraph{R-02: Ransomware Infection.}
+This risk was assigned a likelihood of 3 (Possible) and an impact of 5 (Critical),
+resulting in a risk score of 15 (High). The affected assets were Employee Laptops (A-04)
+and On-Premise NAS (A-05). The risk description highlighted the irregular backup routines
+and absence of endpoint detection and response (EDR) software as the primary
+vulnerabilities enabling this threat.
 
-The \texttt{Define Exceptions} page allows the user to ... 
+\subparagraph{R-04: Client Data Breach.}
+This risk was assigned a likelihood of 3 (Possible) and an impact of 4 (Major),
+resulting in a risk score of 12 (High). The affected assets were Client Project Data
+(A-02) and CRM System (A-03). The risk description noted overly broad file sharing
+permissions in SharePoint and the absence of a data classification policy as key
+contributing factors.
 
-\subsubsection{Risk Management}
-a
-\subsubsection{Compliance}
-a
-\subsubsection{Asset Management}
-a
-\subsubsection{Artificial Intelligence}
-a
-\subsubsection{Reporting}
-a
-\subsubsection{Configure}
-a
+% TODO: INSERT SCREENSHOT: Risk Management
 
-\subsubsection{Standards and Framework support}
-% TODO
+\textit{Observation:} The risk submission form in SimpleRisk is structured and enforces
+a minimum level of documentation for each risk entry. The ability to link risks to
+specific assets and assign categories supports traceability, which aligns with
+ISO~27005's requirements for documented risk assessment. However, the form does not
+explicitly prompt for threat and vulnerability pairings as a structured input; these
+must be described in free-text notes. This means the rigour of the documentation depends
+on the analyst rather than being enforced by the tool. Additionally, the Classic scoring
+method provides only a single likelihood and impact value per risk, with no support for
+uncertainty ranges or confidence levels. Organisations seeking quantitative risk analysis,
+such as those following the FAIR methodology, would find this scoring approach
+insufficient.
 
-\subsection{Tool 4}
+% -----------------------------------------------------------------------------
+% Step 5: Mitigation Planning
+% -----------------------------------------------------------------------------
+
+\paragraph{Mitigation Planning.}
+For each submitted risk, a mitigation plan was defined via
+\texttt{Risk Management > Plan Mitigations}. The mitigation form allows the following
+fields to be populated:
+
+\begin{itemize}
+    \item \textbf{Mitigation Strategy:} selected from predefined options such as
+          ``Reduce Likelihood'', ``Reduce Impact'', or ``Accept Risk''.
+    \item \textbf{Mitigation Effort:} an estimate of implementation effort (Low,
+          Medium, or High).
+    \item \textbf{Mitigation Owner:} the person or role responsible for executing
+          the mitigation.
+    \item \textbf{Mitigation Controls:} linked to the controls created in Step 3.
+    \item \textbf{Current Solution:} a description of any existing measures already
+          in place.
+    \item \textbf{Planning Date:} the target date for mitigation implementation.
+\end{itemize}
+
+Table~\ref{tab:simplerisk-mitigations} summarizes how the NordKonsult mitigations were
+mapped to SimpleRisk's mitigation fields.
+
+\begin{table}[ht]
+\centering
+\caption{Mitigation planning in SimpleRisk Core -- NordKonsult AS}
+\label{tab:simplerisk-mitigations}
+\small
+\begin{tabular}{llll}
+\hline
+\textbf{Risk} & \textbf{Strategy} & \textbf{Effort} & \textbf{Linked Controls} \\
+\hline
+R-01 & Reduce Likelihood & Medium & MFA on M365; Phishing training \\
+R-02 & Reduce Likelihood & High   & EDR deployment; Automated backups \\
+R-03 & Reduce Likelihood & Low    & Password manager; MFA on CRM \\
+R-04 & Reduce Impact     & Medium & Data classification; SharePoint review \\
+R-05 & Reduce Likelihood & Low    & BitLocker enforcement; Device inventory \\
+R-06 & Reduce Impact     & Low    & Role-based access on NAS; Audit logging \\
+R-07 & Reduce Likelihood & Low    & Auto WordPress updates; WAF \\
+R-08 & Reduce Likelihood & Medium & Credential rotation; Network segmentation \\
+\hline
+\end{tabular}
+\end{table}
+
+% TODO:  INSERT SCREENSHOT: Mitigation plan view for one of the risks
+
+\textit{Observation:} SimpleRisk's mitigation planning module provides a clear workflow
+for documenting treatment decisions and linking them to specific controls. The ability
+to distinguish between mitigation strategies (reducing likelihood vs.\ reducing impact)
+is a useful feature that supports structured decision-making. However, the platform does
+not support automated tracking of mitigation progress or deadline notifications in the
+Core (free) version. The mitigation workflow is therefore largely manual, requiring
+regular review by the risk owner. For a small organization like NordKonsult, this may
+be acceptable, but it could become a limitation as the number of risks and controls
+grows.
+
+% -----------------------------------------------------------------------------
+% Step 6: Reporting and Dashboard
+% -----------------------------------------------------------------------------
+
+\paragraph{Reporting and Dashboard.}
+After all risks and mitigations were entered, the Reporting module was used to generate
+an overview of the NordKonsult risk landscape. SimpleRisk Core provides several built-in
+report types, including:
+
+\begin{itemize}
+    \item \textbf{Risk Dashboard:} a graphical overview of open risks grouped by risk
+          level.
+    \item \textbf{Risks by Category:} distribution of risks across threat categories.
+    \item \textbf{Risks by Owner / Team:} showing responsibility distribution.
+    \item \textbf{Risk Trend:} a time-based view of how the overall risk profile
+          evolves, useful for reassessments after mitigation.
+\end{itemize}
+
+For the NordKonsult scenario, the Risk Dashboard showed one Critical risk (R-01), two
+High risks (R-02, R-04), and five Medium risks. This distribution provides a clear
+visual indication of where immediate attention is needed, which would be useful for
+communicating risk status to management.
+
+% TODO: INSERT SCREENSHOT: Risk Dashboard overview
+% TODO: INSERT SCREENSHOT: Risks by Category report
+
+\textit{Observation:} The reporting capabilities in SimpleRisk Core are adequate for
+basic risk communication. The dashboard provides a clear overview of the risk profile,
+and reports can be filtered by various dimensions. However, the reports are limited to
+the platform's built-in formats and cannot be extensively customized. Export options
+include CSV and PDF, which are sufficient for most documentation needs. The
+visualisations are functional but basic compared to commercial GRC platforms, which
+typically offer more advanced charting, drill-down capabilities, and executive summary
+formats.
+
+% -----------------------------------------------------------------------------
+% Step 7: Compliance
+% -----------------------------------------------------------------------------
+
+\paragraph{Compliance Module.}
+The Compliance module was briefly examined to assess whether it could support ongoing
+control monitoring for NordKonsult. The module allows users to initiate compliance
+audits against defined frameworks and to record whether individual controls are
+implemented, partially implemented, or not implemented.
+
+For the purposes of this evaluation, a compliance test was initiated against the custom
+``NordKonsult Controls'' framework. All controls were marked as ``Not Implemented'',
+reflecting the pre-treatment state of the scenario. This provides a baseline against
+which future compliance status could be tracked.
+
+% TODO: INSERT SCREENSHOT: Compliance > Active Audits showing the audit
+
+\textit{Observation:} The compliance module adds useful governance functionality,
+particularly for organizations that need to demonstrate control implementation status
+over time. However, for a small organization like NordKonsult, the overhead of
+maintaining compliance audits may outweigh the benefits unless the organization is
+subject to specific regulatory requirements. The module does not include built-in
+support for Norwegian-specific frameworks such as NSM's
+\textit{Grunnprinsipper for IKT-sikkerhet}, though these could be created manually.
+
+% -----------------------------------------------------------------------------
+% Summary
+% -----------------------------------------------------------------------------
+
+\paragraph{Summary.}
+Table~\ref{tab:simplerisk-summary} provides a summary of the key observations from the
+NordKonsult scenario walkthrough in SimpleRisk Core.
+
+\begin{table}[ht]
+\centering
+\caption{Summary of observations -- SimpleRisk Core with NordKonsult scenario}
+\label{tab:simplerisk-summary}
+\small
+\begin{tabular}{p{3.5cm}p{9cm}}
+\hline
+\textbf{Aspect} & \textbf{Observation} \\
+\hline
+Risk scoring      & Classic scoring aligns well with a qualitative $5 \times 5$ approach.
+                    No support for quantitative (FAIR-style) analysis.
+                    Custom risk levels require manual configuration. \\
+Asset management  & Basic but functional. No asset categorisation or dependency modelling. \\
+Control management & Well-structured with framework support. Bundled SCF library is
+                    comprehensive but may overwhelm small organisations.
+                    No Norwegian-specific framework templates. \\
+Risk and asset linking & Supported and straightforward. Enables traceability from
+                    risk to asset. \\
+Mitigation planning & Clear workflow with strategy differentiation. No automated
+                    progress tracking or notifications in Core version. \\
+Reporting         & Adequate for basic risk communication. Limited customisation.
+                    Export to CSV and PDF available. \\
+Compliance        & Useful for governance-focused organisations. May add unnecessary
+                    overhead for very small organisations. \\
+Suitability for SMEs & Low barrier to entry (free, open-source, VM-based deployment).
+                    Sufficient for foundational risk management. May require
+                    supplementary tools for advanced analysis or regulatory alignment. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{MONARC}
+
 \subsubsection{Tool Overview}
+MONARC (Optimized Risk Analysis Method) is an open-source risk analysis software that was originally developed by CASES (Cyberworld Awareness and Security Enhancement Services), a Luxembourg government cybersecurity initiative, and now maintained by the National Cybersecurity Competence Center. MONARC was primarily created to allow SMEs (Small and Medium-sized Enterprises) to benefit from a well structured risk analysis platform without requiring a significant financial investment or deep expertise in risk management 
+
+The tool implements ISO/IEC 27005 managing information related risks based on the CIA triad criteria: Confidentiality, Integrity, and Availability. Risks are calculated based on three key factors: threat, vulnerability, and impact on the organization.
+
+The method is structured into four phases, inspired by ISO/IEC 27005: 
+\begin{enumerate}
+    \item Context establishment
+    \item Context modeling
+    \item Evaluation and treatment of risks
+    \item Implementation and monitoring
+\end{enumerate}
+The key advantage of MONARC is that it reuses risk analyzes from similar organizations, since businesses in the same field often face the same threats and vulnerabilities, meaning that risk assessments do not have to be rebuilt from scratch.
+
+In general, MONARC is best suited for organizations that seek a structured, repeatable, and standards aligned approach to information security risk management. Its reusable risk models and low knowledge threshold make it especially relevant for SMEs, and multi-department organizations that want to conduct consistent risk assesments without building everything from the ground up.
+
+Table~\ref{tab:monarc-overview} summarizes the key properties of MONARC.
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{4.5cm}|p{9cm}|}
+\hline 
+\textbf{Property} & \textbf{Description} \\
+\hline
+Version (evaluated) & 2.13.3 \\
+\hline
+License & Open-source (GNU Affero General Public License v3) \\
+\hline
+Deployment & Self-hosted; VM image (VirtualBox) or manual installation \\ 
+\hline
+Interface type & Web-based GUI \\ 
+\hline
+Primary function & Asset based risk analysis, treatment, based on threat, vulnerability, and impact \\
+\hline
+Catalogues & Built in pre-populated knowledge bases for threat vulnerabilities \\
+\hline
+Reporting & Management reports: CSV exports \\
+\hline
+Documentation & Official documentation available at monarc.lu \\
+\hline
+Community support  & Github; NC3 supports \\
+\hline
+Target organisations size & Primarily SMEs and multi-department organisations \\
+\hline
+\end{tabular}
+\caption{MONARC -- key properties overview}
+\label{tab:monarc-overview}
+\end{table}
+
+\subsubsection{Installation}
 % TODO
+
 
 \subsubsection{Standards and Framework support}
 % TODO
 
-\subsection{Tool 5}
+\subsection{Eramba}
 \subsubsection{Tool Overview}
 % TODO
 

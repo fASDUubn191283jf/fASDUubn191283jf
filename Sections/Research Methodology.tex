@@ -30,3 +30,162 @@ The second limitation is that the evaluation is conducted using hypothetical org
 The third limitation is that only a certain amount of tools were chosen for this project. There is a vast amount of tools to choose from online, and some of those tools might be superior or inferior in different aspects compared to the ones chosen for this project. The risk management landscape might also change over time, which in turn might make the tools more effective and with higher capabilities in the future.
 
 Regarding validity, the criteria to evaluate the tools are based on established frameworks withing the risk management landscape. An objective approach has been taken in this project, but there are also some unavoidable subjective assessments when it comes to judging how complicated the tools are to use.
+
+\subsection{Test Scenarios}
+To evaluate the selected risk management tools in a practical and comparable manner, a set of fictional but realistic organizational scenarios was developed. Each scenario represents a different organizational size and context, allowing the tools to be assessed under varying levels of complexity, resource availability, and regulatory exposure.
+ 
+The scenarios are designed to reflect typical Norwegian organizational environments and include details such as company size, IT infrastructure, asset inventory, identified threats, and a baseline risk assessment. By applying the same structured scenario to each tool, the evaluation ensures that findings are comparable across tools and grounded in a consistent set of assumptions.
+ 
+% -----------------------------------------------------------------------------
+% Scenario 1: Small Business
+% -----------------------------------------------------------------------------
+ 
+\subsubsection{Scenario 1: Small Enterprise -- NordKonsult AS}
+\label{sec:scenario-small}
+ 
+\paragraph{Company Profile.}
+NordKonsult AS is a fictional Norwegian IT consultancy firm based in Trondheim, established two years ago. The company provides IT advisory services, system integration, and project management to small and medium-sized clients in both the private and public sector. Table~\ref{tab:nordkonsult-profile} summarizes the key organizational attributes.
+ 
+\begin{table}[ht]
+\centering
+\caption{Organizational profile -- NordKonsult AS}
+\label{tab:nordkonsult-profile}
+\begin{tabular}{ll}
+\hline
+\textbf{Attribute}         & \textbf{Detail} \\
+\hline
+Company name               & NordKonsult AS \\
+Industry                   & IT consultancy \\
+Location                   & Trondheim, Norway \\
+Employees                  & 18 (15 consultants, 1 office manager, 1 CEO, \\
+                           & 1 part-time IT administrator) \\
+Annual revenue             & \textasciitilde 12 million NOK \\
+IT maturity                & Low to moderate \\
+Regulatory environment     & GDPR, NSM guidance \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\paragraph{IT Infrastructure.}
+NordKonsult operates a lean, largely cloud-based infrastructure typical of a small Norwegian consultancy. The company relies on Microsoft 365 for email, file storage, and collaboration, a cloud-based CRM system for client management, and Jira Cloud for project tracking. Financial operations are handled through Tripletex, a cloud-based Norwegian accounting platform. On-premise infrastructure is limited to a single NAS device used for legacy project archives, a WireGuard VPN for remote access, and basic network equipment including a Ubiquiti router/firewall, a managed switch, and Wi-Fi access points. All employees use Windows laptops managed through Microsoft Intune. The company website runs on WordPress and is hosted externally.
+ 
+\paragraph{Personnel and Security Culture.}
+NordKonsult has no dedicated security team. The part-time IT administrator handles both general IT support and security-related tasks. Employees received a single introductory security awareness session during onboarding, but no recurring training programme is in place. Password management is handled individually, with no company-wide password manager deployed. There is no formal incident response plan. Backups of the on-premise NAS are performed manually to an external hard drive on an irregular schedule.
+ 
+\paragraph{Asset Inventory.}
+Table~\ref{tab:nordkonsult-assets} presents the assets identified as relevant to NordKonsult's operations. Asset criticality reflects the potential impact on business continuity and client trust if the asset were compromised or unavailable.
+ 
+\begin{table}[ht]
+\centering
+\caption{Identified assets -- NordKonsult AS}
+\label{tab:nordkonsult-assets}
+\begin{tabular}{llllc}
+\hline
+\textbf{ID} & \textbf{Asset Name} & \textbf{Category} & \textbf{Owner} & \textbf{Criticality} \\
+\hline
+A-01 & Microsoft 365 tenant          & Cloud service & IT Admin.       & High \\
+A-02 & Client project data           & Information   & CEO             & High \\
+A-03 & CRM system (HubSpot)          & Cloud service & CEO             & Medium \\
+A-04 & Employee laptops (18x)        & Hardware      & IT Admin.       & Medium \\
+A-05 & On-premise NAS                & Hardware      & IT Admin.       & Low--Med. \\
+A-06 & Accounting system (Tripletex) & Cloud service & Office Mgr.     & High \\
+A-07 & Company website               & Cloud service & IT Admin.       & Low \\
+A-08 & Network equipment             & Hardware      & IT Admin.       & Medium \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\paragraph{Threats and Vulnerabilities.}
+Based on the organizational profile and infrastructure described above, Table~\ref{tab:nordkonsult-threats} presents the identified threats and their associated vulnerabilities. These were selected to represent a realistic threat landscape for a small Norwegian consultancy with limited security resources.
+ 
+\begin{table}[ht]
+\centering
+\caption{Identified threats and vulnerabilities -- NordKonsult AS}
+\label{tab:nordkonsult-threats}
+\small
+\begin{tabular}{lp{3cm}lp{5.5cm}}
+\hline
+\textbf{ID} & \textbf{Threat} & \textbf{Asset(s)} & \textbf{Vulnerability} \\
+\hline
+T-01 & Phishing attack               & A-01, A-02, A-04 & No recurring security awareness training; MFA not enforced on all services \\
+T-02 & Ransomware infection           & A-04, A-05       & Irregular backup routines; no endpoint detection and response (EDR) \\
+T-03 & Unauthorized access to CRM     & A-03             & Weak or reused passwords; no centralized identity management \\
+T-04 & Data breach (client data)      & A-02, A-03       & Overly broad SharePoint sharing permissions; lack of data classification \\
+T-05 & Loss or theft of laptop        & A-04             & No full-disk encryption enforcement; device inventory gaps \\
+T-06 & Insider threat / accidental deletion & A-02, A-05  & No role-based access on NAS; limited audit logging \\
+T-07 & Website defacement             & A-07             & Outdated WordPress plugins; no regular patching schedule \\
+T-08 & Network intrusion              & A-08             & Default credentials on network devices; no network segmentation \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\paragraph{Risk Assessment.}
+A qualitative risk assessment was performed using a $5 \times 5$ risk matrix, where both likelihood and impact are scored on a scale from 1 to 5. The risk score is calculated as \textit{Likelihood} $\times$ \textit{Impact}. Table~\ref{tab:nordkonsult-risk-levels} defines the risk level thresholds used, and Table~\ref{tab:nordkonsult-risks} presents the resulting risk assessment.
+ 
+\begin{table}[ht]
+\centering
+\caption{Risk level thresholds}
+\label{tab:nordkonsult-risk-levels}
+\begin{tabular}{lcl}
+\hline
+\textbf{Score Range} & \textbf{Level} & \textbf{Treatment Approach} \\
+\hline
+1--4    & Low      & Accept or monitor \\
+5--9    & Medium   & Mitigate where cost-effective \\
+10--15  & High     & Mitigate (priority) \\
+16--25  & Critical & Immediate action required \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\begin{table}[ht]
+\centering
+\caption{Risk assessment results -- NordKonsult AS}
+\label{tab:nordkonsult-risks}
+\begin{tabular}{llcccl}
+\hline
+\textbf{Risk ID} & \textbf{Threat} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Score} & \textbf{Level} \\
+\hline
+R-01 & T-01 (Phishing)             & 4 & 4 & 16 & Critical \\
+R-02 & T-02 (Ransomware)           & 3 & 5 & 15 & High \\
+R-03 & T-03 (CRM access)           & 3 & 3 &  9 & Medium \\
+R-04 & T-04 (Data breach)          & 3 & 4 & 12 & High \\
+R-05 & T-05 (Laptop theft)         & 2 & 3 &  6 & Medium \\
+R-06 & T-06 (Insider threat)       & 2 & 3 &  6 & Medium \\
+R-07 & T-07 (Website defacement)   & 3 & 2 &  6 & Medium \\
+R-08 & T-08 (Network intrusion)    & 2 & 4 &  8 & Medium \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\paragraph{Proposed Controls.}
+Table~\ref{tab:nordkonsult-controls} lists the proposed risk treatment measures for each identified risk. All treatments follow a mitigation strategy. These controls serve as the baseline for evaluating how each tool supports the documentation, assignment, and tracking of risk treatment activities.
+ 
+\begin{table}[ht]
+\centering
+\caption{Proposed risk treatment controls -- NordKonsult AS}
+\label{tab:nordkonsult-controls}
+\small
+\begin{tabular}{lp{7.5cm}c}
+\hline
+\textbf{Risk} & \textbf{Proposed Control} & \textbf{Priority} \\
+\hline
+R-01 & Enable MFA on all Microsoft 365 accounts; implement quarterly phishing awareness training & High \\
+R-02 & Deploy EDR on all endpoints; implement automated daily backups with offsite replication & High \\
+R-03 & Deploy company-wide password manager; enforce MFA on CRM & Medium \\
+R-04 & Implement data classification policy; review and restrict SharePoint sharing permissions & High \\
+R-05 & Enforce BitLocker encryption via Intune; maintain updated device inventory & Medium \\
+R-06 & Implement role-based access on NAS; enable audit logging & Medium \\
+R-07 & Set up automatic WordPress updates; use a web application firewall & Low \\
+R-08 & Change default credentials on network devices; implement network segmentation & Medium \\
+\hline
+\end{tabular}
+\end{table}
+ 
+\subsubsection{Scenario 2: Medium-Sized Enterprise}
+\label{sec:scenario-medium}
+% TODO: Add medium enterprise scenario
+ 
+\subsubsection{Scenario 3: Large Enterprise / Public Sector}
+\label{sec:scenario-large}
+% TODO: Add large enterprise scenario
