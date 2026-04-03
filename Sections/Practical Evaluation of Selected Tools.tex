@@ -687,15 +687,76 @@ Target organisations size & Primarily SMEs and multi-department organisations \\
 \end{table}
 
 \subsubsection{Installation}
-% TODO
-
+MONARC can be installed in various ways. For our evaluated case, we decided to go with a VM image due to its simplicity, as it does not require a manual server configuration and is easier to use and maintain for users without a Linux administration background. The VM image was imported into Virtualbox, and after powering up the VM, the web interface that MONARC uses was reachable through the IP address displayed at boot. One thing to note when the VM is rebooted is that it relies on DHCP by default, meaning that the IP address can change between reboots. We resolved this issue by configuring a static IP address within the VM, making sure that the web interface is consistently available at the same address. 
 
 \subsubsection{Standards and Framework support}
-% TODO
+As a method and tool, MONARC is explicitly built around ISO/IEC 27005 as its primary methodological foundation. This is clear as it enforces the standard's procedure steps through its four stage treatment: context establishment, context modeling, risk evaluation and treatment, and implementation and monitoring. 
+
+The platform's scoring approach, calculating risk based on threat likelihood, vulnerability level, and potential impact, is close to the risk estimation process that is described in ISO/IEC 27001, GDPR, and PCI--DSS through its built in risk models and reporting capabilities, thus making it suitable for enterprises pursuing certification or regulatory compliance. 
+
+NIST SP--800 is not mentioned or supported by MONARC's methodology. Similarly, OCTAVE and FAIR are not directly supported. MONARC does share a similar asset-based approach with some of OCTAVE's focus on critical asset and organizational context, but it does not follow OCTAVE's structured, workshop-based assessment process. FAIR's probability and financial quantified risk modeling is also not reflected in MONARC's qualitative approach.
+
+Overall, MONARC is best characterized as a structured, framework-driven risk analysis tool, with a strong direct alignment with IOS/IEC 27005. Its conformance to established standards is enforced, by MONARC rather than leaving it up to the user to figure it out themselves. This makes it suitable for organizations that seek a standardized and documented approach to information security risk management. 
+
+\subsubsection{}
 
 \subsection{Eramba}
 \subsubsection{Tool Overview}
+Eramba is a free open-source Governance, Risk, and Compliance (GRC) software that was developed by GRC professionals. The platform is web-based and uses GUI. All the functionality of the tool is accessible via a browser interface and is organised into modules. The tool does not require CLI when in normal use. Everything is done via the browser interface after installation.
+
+Eramba is deployed as a self hosted web application and it is recommended to deploy it via Docker, although VMware is also possible. Eramba is available in two editions: a free community edition with no user or data limitations, and a paid Enterprise edition that adds more features and newer updates. The version used in this project is the free community edition.
+
+Eramba is structured around a risk registere where risks are identified, assigned to owners/groups and then connected to relevant threats and vulnerabilites via a built in library that the user can customize. The risks that get put into the risk register go through 2 stages. The first stage is the initial analysis of the risk, and the second stage is the post treatment results. Each risk is calculated through likehlihood and the impact it has, these are configurable. Eramba also includes modules for compliance testing, asset managment, incident tracking and third party risks. The tool comes prearranged with a broad range of frameworks such as ISO 27005/27001, SOC2 and DORA. This will allow users to manage multiple frameworks at the same time.
+
+Table~\ref{tab:eramba} Shows an overview of Eramba
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\textbf{Property} & \textbf{Description} \\
+\hline
+Version (evaluated) & Community Edition (2025, Docker)  \\
+\hline
+License & Open-source (free Community tier and paid Enterprise edition available) \\
+\hline
+Deployment & Self hosted via Docker/Docker Compose. Manual install on Linux with LAMP stack \\
+\hline
+Interface type & GUI browser that is web-based, no CLI in normal use \\
+\hline
+Primary function & Risk register, risk scoring, mitigation tracking, compliance mapping, policy management \\
+\hline
+Risk analysis type & Qualitative: configurable likelihood and impact scoring across two stages: initial analysis and post-treatment \\
+\hline
+Asset management & Built-in: assets defined and linked to risks, third party entities, and compliance requirements \\
+\hline
+Threat / vulnerability catalogues & Built in and pre-loaded library that is expandable via CSV importm auto suggested based on linked assets \\
+\hline
+Workflow and traceability & Structured submission, treatment, and review workflow; scheduled review records with full audit trail \\
+\hline
+Reporting & Built in reports, dashboards, and filters like CSV and email based exports \\
+\hline
+Visualization & Charts and risk matrix dashboards within the reporting module \\
+\hline
+Framework alignment & ISO 27001, ISO/IEC 27005, PCI-DSS, SOC 2, CIS Controls, DORA \\
+\hline
+Integrations & REST API available, webhook support like Jira and Microsoft Teams integration in Enterprise tier \\
+\hline
+Learning curve & Moderate. A comprehensive free learning portal and documentation available \\
+\hline
+Documentation / maturity & Official documentation and free learning courses at eramba.org. Active community forum \\
+\hline
+Community support & Open community forum with over a decade of active community development/feedback \\
+\hline
+Target organisation size & Small to large organisations. suited for multi-framework GRC programmes \\
+\hline
+\end{tabular}
+\caption{Eramba Community Edition -- Tool Property Summary}
+\label{tab:eramba}
+\end{table}
 % TODO
+
+
 
 \subsubsection{Standards and Framework support}
 % TODO
