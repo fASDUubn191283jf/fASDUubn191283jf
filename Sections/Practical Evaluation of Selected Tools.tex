@@ -1,62 +1,5 @@
 \section{Practical Evaluation of Selected Tools}
-
-\subsection{OpenRMF OSS}
-\subsubsection{Tool Overview}
-OpenRMF OSS is a web-based, open-source tool designed to support the implementation of the \textbf{NIST Risk Management Framework (RMF)} in U.S. Department of Defense–oriented environments. The tool focuses on managing and organizing security assessment artifacts such as \textbf{DISA STIG checklists}, \textbf{SCAP scan results}, and \textbf{Nessus/ACAS data}, providing a centralized platform for tracking compliance and security findings across systems.
-
-The application is distributed as a \textbf{containerized solution} and can be deployed locally or in server, virtualized, or cloud environments. OpenRMF OSS enables users to consolidate assessment data into a single source of truth, track vulnerability status, and generate RMF-related outputs such as \textbf{Plan of Action and Milestones (POA\&M)}, \textbf{Risk Assessment Reports (RAR)}, and test plan summaries. Its primary emphasis is on \textbf{compliance tracking, documentation, and audit readiness}, rather than on advanced or quantitative risk modeling.
-
-Table~\ref{tab:openrmf-overview} summarizes the key properties of OpenRMF OSS.
-
-\begin{table}[h!]
-\centering
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{|p{4.5cm}|p{9cm}|}
-\hline
-\textbf{Property} & \textbf{Description} \\
-\hline
-Version (evaluated) & TODO \\
-\hline
-License & TODO \\
-\hline
-Deployment & TODO \\
-\hline
-Interface type & TODO \\
-\hline
-Primary function & TODO \\
-\hline
-Risk analysis type & TODO \\
-\hline
-Asset management & TODO \\
-\hline
-Threat / vulnerability catalogues & TODO\\
-\hline
-Workflow and traceability & TODO \\
-\hline
-Reporting & TODO \\
-\hline
-Visualisation & TODO \\
-\hline
-Framework alignment & TODO \\
-\hline
-Integrations & TODO \\
-\hline
-Learning curve & TODO \\
-\hline
-Documentation / maturity & TODO \\
-\hline
-Community support & TODO \\
-\hline
-Target organisation size & TODO \\
-\hline
-\end{tabular}
-\caption{OpenRMF OSS -- key properties overview}
-\label{tab:openrmf-overview}
-\end{table}
-
-\subsubsection{Standards and Framework support}
-% TODO
-
+~\label{chap:practical-evaluation}
 \subsection{SimpleRisk Core}
 
 \subsubsection{Tool Overview}
@@ -81,7 +24,6 @@ testing, asset management, and reporting. An artificial intelligence module is l
 the interface, though its capabilities in the Core (free) tier are limited.
 
 Table~\ref{tab:simplerisk-overview} summarizes the key properties of SimpleRisk Core.
-
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
@@ -89,39 +31,45 @@ Table~\ref{tab:simplerisk-overview} summarizes the key properties of SimpleRisk 
 \hline
 \textbf{Property} & \textbf{Description} \\
 \hline
+\multicolumn{2}{|l|}{\textit{Basic Properties}} \\
+\hline
 Version (evaluated) & 20260302-001 \\
 \hline
 License & Open-source (free Core tier; paid add-on modules available) \\
 \hline
-Deployment & Self-hosted; VM image (VirtualBox/VMware) or manual install \\
+Deployment & Self-hosted; VM image (VirtualBox/VMware) or manual LAMP install \\
 \hline
-Interface type & Web-based GUI (browser); no CLI required for normal use \\
+Interface type & Web-based GUI; no CLI required for normal use \\
 \hline
-Primary function & Risk register, risk scoring, mitigation tracking, compliance testing \\
+Target organisation size & Small to medium-sized organisations; early-stage GRC programmes \\
 \hline
-Risk analysis type & Qualitative and semi-quantitative; six scoring methodologies: Classic, CVSS, DREAD, OWASP, Custom, and Contributing Risk \\
+\multicolumn{2}{|l|}{\textit{Methodology Support}} \\
 \hline
-Asset management & Basic; assets can be defined and linked to risks \\
+ISO/IEC 27005 & Partial; scoring and treatment workflow align with intent but the process is not enforced \\
 \hline
-Threat / vulnerability catalogues & Not built-in; risks and threats are entered manually \\
+NIST RMF & Partial; Planning Strategy options and Control Phase field show alignment; no structured RMF workflow \\
 \hline
-Workflow and traceability & Structured submission, mitigation, and review workflow; risk history and audit log maintained \\
+FAIR & Not supported \\
 \hline
-Reporting & Built-in reports and dashboards; PDF/CSV export \\
+OCTAVE & Not supported \\
 \hline
-Visualisation & Basic charts and dashboards within the reporting module \\
+EBIOS & Not supported \\
 \hline
-Framework alignment & Adaptable to ISO/IEC 27005 and NIST RMF intent; compliance frameworks via Compliance Forge SCF \\
+\multicolumn{2}{|l|}{\textit{Key Findings}} \\
+\hline
+Risk analysis & Six scoring methodologies available; qualitative only; no quantitative or financial modelling \\
+\hline
+Asset management & Basic; monetary valuation scale requires manual mapping from qualitative criticality \\
+\hline
+Threat catalogues & Not built-in; Threat Mapping field requires manual population \\
 \hline
 Integrations & REST API available; no native SIEM, CMDB, or ticketing integrations in Core tier \\
 \hline
-Learning curve & Low to moderate; GUI is logically structured and does not require technical expertise \\
+Reporting & Ten grouping dimensions; pie charts only; no heat map or trend analysis \\
 \hline
-Documentation / maturity & Official documentation available at simplerisk.com; active community forum \\
+Compliance & Full audit lifecycle (define, initiate, active, past); audit initiation issue observed in evaluated version \\
 \hline
-Community support & Open community forum; GitHub repository publicly accessible \\
-\hline
-Target organisation size & Small to medium-sized organisations; early-stage GRC programmes \\
+Documentation & Per-page help links present but partially unimplemented; some documentation does not reflect current platform behaviour \\
 \hline
 \end{tabular}
 \caption{SimpleRisk Core -- key properties overview}
@@ -130,14 +78,22 @@ Target organisation size & Small to medium-sized organisations; early-stage GRC 
 
 \subsubsection{Installation}
 
-The evaluated instance was deployed using the official VM image imported into VirtualBox.
-After import, the VM was started and the IPv4 address was retrieved using \texttt{ip addr}.
-The web interface was then accessible at \texttt{https://<IP>}, where an administrator
-account was created on first login. The setup process required no manual server
-configuration, making initial deployment straightforward for users without a Linux
-administration background. The default VM credentials are publicly documented, so
-changing them immediately after deployment is a necessary first step before any
-meaningful use.
+SimpleRisk supports four installation methods: a scripted installation, a virtual machine
+image, a Docker-based deployment, and a manual installation on a Linux server running
+the LAMP stack (Linux, Apache, MySQL, and PHP). The scripted option automates the
+setup on a supported Linux distribution using a single command, while the Docker option
+packages the application in a container suitable for both local and cloud environments.
+The manual installation provides the most control but carries a warning in the official
+documentation that it should only be used where the other methods are not viable, as
+operating system updates can cause the instructions to become outdated.
+ 
+For this evaluation, the VirtualBox virtual machine image was used. This option requires
+no manual server configuration and is the most accessible path for users without a Linux
+administration background. After importing the image into VirtualBox and starting the
+VM, the IPv4 address was retrieved using \texttt{ip addr}. The web interface was then
+accessible at \texttt{https://<IP>}, where an administrator account was created on
+first login. The default VM credentials are publicly documented, so changing them
+immediately after deployment is a necessary first step before any meaningful use.
 
 \subsubsection{Platform Modules}
 \label{sec:simplerisk-modules}
@@ -216,8 +172,16 @@ Financial, and Reputation provided by default, each assigned a weight of 0.25. B
 the subjects and their weights can be modified, and new subjects can be added, allowing
 the impact calculation to reflect the organisation's specific priorities.
 
-\subsubsection{Standards and Framework Support}
+Throughout the platform, many pages include an ``About This Page'' button in the top
+right corner that links directly to the relevant section of SimpleRisk's official
+documentation. This is a thoughtful usability feature, particularly for users who are
+new to GRC platforms, as it removes the need to search through unrelated documentation
+pages. However, the feature is not fully implemented: during the evaluation, a number
+of pages displayed an ``Under Construction'' notice when the button was clicked,
+indicating that documentation had not yet been written for those pages. This limits
+the practical value of the feature in the evaluated version.
 
+\subsubsection{Standards and Framework Support}
 SimpleRisk Core does not explicitly implement a single named framework such as ISO/IEC
 27005 or the NIST Risk Management Framework as a structured workflow. Instead, it
 provides a flexible risk register and scoring environment that can be adapted to support
@@ -396,23 +360,64 @@ following fields:
           both use a six-level scale of Not Performed, Performed, Documented, Managed,
           Reviewed, and Optimizing.
     \item \textbf{Control Status}: Pass or Fail. This field is not configurable.
-    \item \textbf{Mitigation Percent}: a numeric field indicating how much the control
-          contributes to mitigating the associated risk.
+    \item \textbf{Mitigation Percent}: a numeric value representing the percentage by
+          which this control reduces the inherent risk score when linked to a mitigation.
+          When multiple controls are linked to a single mitigation, only the highest
+          mitigation percentage among them is applied to calculate the residual risk
+          score.
     \item \textbf{Mapped Control Frameworks}: allows the control to be linked to one
-          or more defined frameworks.
+          or more defined frameworks. Each mapping requires a control number, which
+          serves as a cataloguing identifier within that framework, and an optional
+          reference text.
     \item \textbf{Mapped Assets}: allows the control to be associated with specific
           assets.
 \end{itemize}
  
-For the NordKonsult scenario, each control was given a short name, a brief description, and an owner. Current Control Maturity was set to ``Not Performed'' and Control Status was set to ``Fail'' to reflect that none of the proposed controls were in place at the start of the scenario. Each control was also mapped to the ``NordKonsult Controls'' framework via the Mapped Control Frameworks field.
+For the NordKonsult scenario, each control was given a short name, a brief description,
+and an owner. Current Control Maturity was set to ``Not Performed'' and Control Status
+was set to ``Fail'' to reflect that none of the proposed controls were in place at the
+start of the scenario. Each control was mapped to the ``NordKonsult Controls'' framework
+via the Mapped Control Frameworks field, using the control IDs defined in
+Table~\ref{tab:nordkonsult-controls} (e.g., C-01a, C-01b) as the control number.
+Reference Text was left blank as the NordKonsult Controls framework has no external
+reference document.
  
 SimpleRisk also offers the Compliance Forge Secure Controls Framework (SCF), which provides a pre-built library of 875 controls mapped to 148 frameworks. While this library was examined during the evaluation, the NordKonsult scenario used custom controls to better test the tool's flexibility in handling organization-specific risk treatments.
  
 % TODO: INSERT SCREENSHOT: Governance > Define Control Frameworks showing the custom framework
- 
-\textit{Observation:} The control form in SimpleRisk is more comprehensive than it initially appears. The inclusion of both Current and Desired Control Maturity using a six-level scale, which resembles a capability maturity model, allows organizations to track not just whether a control exists, but how well it is implemented and where they
-want it to be. This is a useful feature that goes beyond the simple pass/fail status and supports more nuanced governance reporting. The Control Phase field is also notable, as its inclusion of NIST CSF function names (Govern, Protect, Identify, Detect, Recover, Respond) suggests a degree of alignment with that framework out of the box. However, the platform does not provide direct mapping to Norwegian-specific frameworks such as NSM's \textit{Grunnprinsipper for IKT-sikkerhet}, which would need to be created
-manually. The bundled SCF library is a useful starting point for organizations seeking alignment with international standards, but its breadth may be overwhelming for a small organization like NordKonsult.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{NordKonsultFramework.png}
+    \caption{The created NordKonsult Framework}
+    \label{fig:NordKonsult Framework}
+\end{figure}
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.75\linewidth]{NordKonsultControls.png}
+     \caption{Control entry for MFA on Microsoft 365}
+     \label{fig:NordKonsultControl}
+ \end{figure}
+\textit{Observation:} The control form in SimpleRisk is more comprehensive than it
+initially appears. The inclusion of both Current and Desired Control Maturity using a
+six-level scale, which resembles a capability maturity model, allows organisations to
+track not just whether a control exists, but how well it is implemented and where they
+want it to be. This is a useful feature that goes beyond the simple pass/fail status and
+supports more nuanced governance reporting. The Mitigation Percent field adds a further
+layer of analytical value, as it enables residual risk scores to be calculated based on
+the effectiveness of linked controls, though the constraint that only the single highest
+percentage is applied may not reflect real-world scenarios where multiple complementary
+controls collectively reduce risk. The Control Phase field is also notable, as its
+inclusion of NIST CSF function names (Govern, Protect, Identify, Detect, Recover,
+Respond) suggests a degree of alignment with that framework out of the box. However,
+the platform does not provide direct mapping to Norwegian-specific frameworks such as
+NSM's \textit{Grunnprinsipper for IKT-sikkerhet}, which would need to be created
+manually. The bundled SCF library is a useful starting point for organisations seeking
+alignment with international standards, but its breadth may be overwhelming for a small
+organisation like NordKonsult. It should also be noted that the official SimpleRisk
+documentation does not always reflect the current state of the platform; for example,
+the documentation describes Supplemental Guidance as a file upload field, while the
+platform itself presents it as a rich text editor. This discrepancy reinforces the
+importance of direct hands-on evaluation over reliance on documentation alone.
 
 % -----------------------------------------------------------------------------
 % Step 4: Risk Submission
@@ -420,219 +425,711 @@ manually. The bundled SCF library is a useful starting point for organizations s
 
 \paragraph{Risk Submission.}
 The eight risks from Table~\ref{tab:nordkonsult-risks} were entered via
-\texttt{Risk Management > Submit Risk}. For each risk, the submission form was populated
-with the following information:
-
+\texttt{Risk Management > Submit Risk}. The Submit Risk form contains the following
+fields:
+ 
 \begin{itemize}
-    \item \textbf{Subject:} a concise description of the risk scenario (e.g.,
-          ``Phishing attack compromises Microsoft 365 accounts'').
-    \item \textbf{Risk Scoring Method:} set to Classic for all risks.
-    \item \textbf{Likelihood and Impact:} scored according to the values in
-          Table~\ref{tab:nordkonsult-risks}.
-    \item \textbf{Category:} assigned to a threat category (e.g., ``Social
-          Engineering'', ``Malware'', ``Data Breach'').
-    \item \textbf{Owner:} set to the responsible role within NordKonsult.
-    \item \textbf{Affected Assets:} linked to the relevant assets registered in Step 2.
-    \item \textbf{Notes:} a description of the risk scenario including the underlying
-          vulnerability and potential consequences.
+    \item \textbf{Subject}: a concise description of the risk.
+    \item \textbf{Risk Mapping}: maps the risk against one of 32 predefined high-level
+          risk categories, which can be used to group and report on risks at a management
+          level. The available categories can be modified via the Risk and Threat Catalog
+          in the Configure menu.
+    \item \textbf{Threat Mapping}: links the risk to a defined threat source. This field
+          is present in the platform but is not documented in the official Risk Submission
+          documentation, which is a further example of a discrepancy between the platform
+          and its documentation.
+    \item \textbf{Category}: a dropdown for classifying the risk by threat type,
+          configurable via the Add and Remove Values page in the Configure menu.
+    \item \textbf{Site/Location}: the location associated with the risk, also
+          configurable via the Add and Remove Values page.
+    \item \textbf{External Reference ID}: an optional identifier for cross-referencing
+          with external systems or documentation. Notably, entering a CVE identifier
+          triggers automatic population of the risk details from the National
+          Vulnerability Database, provided the instance has internet access.    \item \textbf{Control Regulation}: links the risk to a relevant regulation or
+          compliance requirement.
+    \item \textbf{Control Number}: an optional cataloguing identifier.
+    \item \textbf{Affected Assets}: links the risk to one or more registered assets.
+    \item \textbf{Technology}: the technology associated with the risk.
+    \item \textbf{Team} and \textbf{Additional Stakeholders}: the teams or individuals
+          with an interest in the risk.
+    \item \textbf{Owner} and \textbf{Owner's Manager}: the person responsible for
+          managing the risk and their manager.
+    \item \textbf{Risk Source}: the origin of the risk (e.g., internal, external).
+    \item \textbf{Risk Scoring Method}: the scoring methodology to apply. Set to
+          Classic for all NordKonsult risks.
+    \item \textbf{Current Likelihood} and \textbf{Current Impact}: the likelihood and
+          impact values used to calculate the risk score.
+    \item \textbf{Risk Assessment}: a rich text field for documenting the assessment
+          rationale, including threat and vulnerability context.
+    \item \textbf{Additional Notes}: a rich text field for supplementary information.
+    \item \textbf{Supporting Documentation}: a file upload field for attaching
+          relevant evidence or reference documents (max 5 MB).
+    \item \textbf{Tags}: free-text tags for filtering and grouping.
 \end{itemize}
-
-To illustrate the process, the following provides detail on how three representative
-risks were submitted.
-
+ 
+For the NordKonsult scenario, the Subject, Category, Affected Assets, Owner, Risk
+Scoring Method, Current Likelihood, Current Impact, and Risk Assessment fields were
+populated for each risk. The Risk Assessment field was used to document the underlying
+vulnerability and potential consequences of each risk. To illustrate the process, the
+following provides detail on how three representative risks were submitted.
+ 
 \subparagraph{R-01: Phishing Attack.}
 This risk was assigned a likelihood of 4 (Likely) and an impact of 4 (Major), resulting
 in a risk score of 16 (Critical). The affected assets were set to Microsoft 365 Tenant
-(A-01), Client Project Data (A-02), and Employee Laptops (A-04). The risk description
-noted that employees may fall victim to phishing emails due to the absence of recurring
-security awareness training, and that multi-factor authentication is not enforced across
-all accounts. A successful phishing attack could result in unauthorised access to email,
-client data, and internal communications.
-
+(A-01), Client Project Data (A-02), and Employee Laptops (A-04). The Risk Assessment
+field noted that employees may fall victim to phishing emails due to the absence of
+recurring security awareness training, and that multi-factor authentication is not
+enforced across all accounts. A successful phishing attack could result in unauthorised
+access to email, client data, and internal communications.
+ 
 \subparagraph{R-02: Ransomware Infection.}
 This risk was assigned a likelihood of 3 (Possible) and an impact of 5 (Critical),
 resulting in a risk score of 15 (High). The affected assets were Employee Laptops (A-04)
-and On-Premise NAS (A-05). The risk description highlighted the irregular backup routines
-and absence of endpoint detection and response (EDR) software as the primary
+and On-Premise NAS (A-05). The Risk Assessment field highlighted the irregular backup
+routines and absence of endpoint detection and response (EDR) software as the primary
 vulnerabilities enabling this threat.
-
+ 
 \subparagraph{R-04: Client Data Breach.}
 This risk was assigned a likelihood of 3 (Possible) and an impact of 4 (Major),
 resulting in a risk score of 12 (High). The affected assets were Client Project Data
-(A-02) and CRM System (A-03). The risk description noted overly broad file sharing
+(A-02) and CRM System (A-03). The Risk Assessment field noted overly broad file sharing
 permissions in SharePoint and the absence of a data classification policy as key
 contributing factors.
-
-% TODO: INSERT SCREENSHOT: Risk Management
-
-\textit{Observation:} The risk submission form in SimpleRisk is structured and enforces
-a minimum level of documentation for each risk entry. The ability to link risks to
-specific assets and assign categories supports traceability, which aligns with
-ISO~27005's requirements for documented risk assessment. However, the form does not
-explicitly prompt for threat and vulnerability pairings as a structured input; these
-must be described in free-text notes. This means the rigour of the documentation depends
-on the analyst rather than being enforced by the tool. Additionally, the Classic scoring
-method provides only a single likelihood and impact value per risk, with no support for
-uncertainty ranges or confidence levels. Organisations seeking quantitative risk analysis,
-such as those following the FAIR methodology, would find this scoring approach
-insufficient.
+ 
+% TODO: INSERT SCREENSHOT: Risk Management > Risk register showing submitted risks
+ 
+\textit{Observation:} The risk submission form in SimpleRisk is comprehensive and
+supports a reasonable level of structured documentation. The presence of dedicated
+Threat Mapping and Risk Mapping fields indicates that the platform does support linking
+risks to defined threat sources and to predefined high-level risk categories, which goes
+beyond simple free-text entry. However, in practice the Threat Mapping field depends on
+threat sources being pre-defined in the system; without a built-in threat catalogue, the
+analyst must populate this data manually before it becomes useful. The CVE auto-population
+feature via the External Reference ID field is a notable practical capability, as it
+reduces manual effort when documenting technically known vulnerabilities. The separation
+of Risk Assessment and Additional Notes into two distinct rich text fields encourages
+more thorough documentation, though neither field enforces a specific structure, meaning
+documentation quality still depends on the analyst. It is also worth noting that the
+Threat Mapping field is present in the platform but absent from the official
+documentation, which is consistent with the pattern of discrepancies between the
+platform and its documentation observed elsewhere in this evaluation. The Classic scoring
+method provides a single likelihood and impact value per risk with no support for
+uncertainty ranges or confidence levels, which would be insufficient for organisations
+seeking quantitative risk analysis such as those following the FAIR methodology.
 
 % -----------------------------------------------------------------------------
 % Step 5: Mitigation Planning
 % -----------------------------------------------------------------------------
-
+ 
 \paragraph{Mitigation Planning.}
 For each submitted risk, a mitigation plan was defined via
-\texttt{Risk Management > Plan Mitigations}. The mitigation form allows the following
-fields to be populated:
-
+\texttt{Risk Management > Plan Mitigations}. The mitigation form contains the following
+fields:
+ 
 \begin{itemize}
-    \item \textbf{Mitigation Strategy:} selected from predefined options such as
-          ``Reduce Likelihood'', ``Reduce Impact'', or ``Accept Risk''.
-    \item \textbf{Mitigation Effort:} an estimate of implementation effort (Low,
-          Medium, or High).
-    \item \textbf{Mitigation Owner:} the person or role responsible for executing
-          the mitigation.
-    \item \textbf{Mitigation Controls:} linked to the controls created in Step 3.
-    \item \textbf{Current Solution:} a description of any existing measures already
-          in place.
-    \item \textbf{Planning Date:} the target date for mitigation implementation.
+    \item \textbf{Planned Mitigation Date}: the target date for mitigation
+          implementation.
+    \item \textbf{Planning Strategy}: the chosen risk treatment approach, selected
+          from Accept, Mitigate, Research, Transfer, and Watch. These options correspond
+          directly to the risk treatment strategies defined in ISO/IEC 27005 and the
+          NIST RMF.
+    \item \textbf{Mitigation Effort}: an estimate of implementation effort using a
+          five-level scale of Trivial, Minor, Considerable, Significant, and Exceptional.
+    \item \textbf{Mitigation Cost}: a monetary range dropdown using the same scale
+          as the Asset Valuation field.
+    \item \textbf{Mitigation Owner}: the user responsible for executing the mitigation.
+    \item \textbf{Mitigation Team}: the team responsible for implementation.
+    \item \textbf{Mitigation Percent}: the percentage by which the mitigation reduces
+          the inherent risk score to produce the residual risk score.
+    \item \textbf{Mitigation Controls}: links to one or more controls defined in the
+          Governance module.
+    \item \textbf{Current Solution}: a rich text field for describing any existing
+          measures already in place.
+    \item \textbf{Security Requirements}: a rich text field for documenting the
+          requirements the mitigation must satisfy.
+    \item \textbf{Security Recommendations}: a rich text field for implementation
+          guidance and recommended actions.
+    \item \textbf{Supporting Documentation}: a file upload field for attaching
+          relevant evidence or reference documents.
 \end{itemize}
-
-Table~\ref{tab:simplerisk-mitigations} summarizes how the NordKonsult mitigations were
-mapped to SimpleRisk's mitigation fields.
-
+ 
+For the NordKonsult scenario, the Planning Strategy was set to Mitigate for all risks,
+as each risk has a feasible and cost-effective treatment available.
+Table~\ref{tab:simplerisk-mitigations} summarises the mitigation planning entries for
+each risk.
+ 
 \begin{table}[ht]
 \centering
 \caption{Mitigation planning in SimpleRisk Core -- NordKonsult AS}
 \label{tab:simplerisk-mitigations}
 \small
-\begin{tabular}{llll}
+\begin{tabular}{lllll}
 \hline
-\textbf{Risk} & \textbf{Strategy} & \textbf{Effort} & \textbf{Linked Controls} \\
+\textbf{Risk} & \textbf{Strategy} & \textbf{Effort} & \textbf{Percent} & \textbf{Linked Controls} \\
 \hline
-R-01 & Reduce Likelihood & Medium & MFA on M365; Phishing training \\
-R-02 & Reduce Likelihood & High   & EDR deployment; Automated backups \\
-R-03 & Reduce Likelihood & Low    & Password manager; MFA on CRM \\
-R-04 & Reduce Impact     & Medium & Data classification; SharePoint review \\
-R-05 & Reduce Likelihood & Low    & BitLocker enforcement; Device inventory \\
-R-06 & Reduce Impact     & Low    & Role-based access on NAS; Audit logging \\
-R-07 & Reduce Likelihood & Low    & Auto WordPress updates; WAF \\
-R-08 & Reduce Likelihood & Medium & Credential rotation; Network segmentation \\
+R-01 & Mitigate & Considerable  & 70 & C-01a, C-01b \\
+R-02 & Mitigate & Significant   & 80 & C-02a, C-02b \\
+R-03 & Mitigate & Minor         & 60 & C-03a, C-03b \\
+R-04 & Mitigate & Considerable  & 65 & C-04a, C-04b \\
+R-05 & Mitigate & Minor         & 75 & C-05a, C-05b \\
+R-06 & Mitigate & Minor         & 60 & C-06a, C-06b \\
+R-07 & Mitigate & Trivial       & 50 & C-07a, C-07b \\
+R-08 & Mitigate & Considerable  & 70 & C-08a, C-08b \\
 \hline
 \end{tabular}
 \end{table}
-
-% TODO:  INSERT SCREENSHOT: Mitigation plan view for one of the risks
-
-\textit{Observation:} SimpleRisk's mitigation planning module provides a clear workflow
-for documenting treatment decisions and linking them to specific controls. The ability
-to distinguish between mitigation strategies (reducing likelihood vs.\ reducing impact)
-is a useful feature that supports structured decision-making. However, the platform does
-not support automated tracking of mitigation progress or deadline notifications in the
-Core (free) version. The mitigation workflow is therefore largely manual, requiring
-regular review by the risk owner. For a small organization like NordKonsult, this may
-be acceptable, but it could become a limitation as the number of risks and controls
-grows.
-
+ 
+To illustrate the result, Figure~\ref{fig:simplerisk-mitigation-r01} shows the Risk
+Details page for R-01 after mitigation planning was completed. The platform calculated
+a residual risk score of 4.8 (Low), derived by applying the 70\% mitigation percentage
+to the inherent risk score of 16 (Critical). The status of the risk was automatically
+updated to ``Mitigation Planned'', and the linked control is visible in the Mitigation
+Controls panel.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{mitigation_r01.png}
+    \caption{Risk Details page for R-01 after mitigation planning, showing inherent
+             risk (16, Critical), residual risk (4.8, Low), and linked control}
+    \label{fig:simplerisk-mitigation-r01}
+\end{figure}
+ 
+ 
+\textit{Observation:} The mitigation planning module in SimpleRisk is well-structured
+and covers the key elements of a risk treatment plan. The Planning Strategy options
+(Accept, Mitigate, Research, Transfer, Watch) align directly with the treatment
+strategies defined in ISO/IEC 27005 and the NIST RMF, which is a meaningful point of
+framework alignment that is not always present in open-source tools. The residual risk
+calculation is automatic once a Mitigation Percent is set, providing immediate feedback
+on the expected effect of the planned treatment, as seen in the reduction from 16
+(Critical) to 4.8 (Low) for R-01. However, the Mitigation Percent must be estimated
+by the analyst with no structured guidance from the tool, meaning the residual risk
+score is only as reliable as the analyst's judgment. The platform does not support
+automated tracking of mitigation progress or deadline notifications in the Core tier,
+so the workflow remains largely manual beyond the initial documentation. For a small
+organisation like NordKonsult this is likely acceptable, but it could become a
+limitation as the risk register grows.
+ 
 % -----------------------------------------------------------------------------
 % Step 6: Reporting and Dashboard
 % -----------------------------------------------------------------------------
-
+ 
 \paragraph{Reporting and Dashboard.}
 After all risks and mitigations were entered, the Reporting module was used to generate
-an overview of the NordKonsult risk landscape. SimpleRisk Core provides several built-in
-report types, including:
-
-\begin{itemize}
-    \item \textbf{Risk Dashboard:} a graphical overview of open risks grouped by risk
-          level.
-    \item \textbf{Risks by Category:} distribution of risks across threat categories.
-    \item \textbf{Risks by Owner / Team:} showing responsibility distribution.
-    \item \textbf{Risk Trend:} a time-based view of how the overall risk profile
-          evolves, useful for reassessments after mitigation.
-\end{itemize}
-
-For the NordKonsult scenario, the Risk Dashboard showed one Critical risk (R-01), two
-High risks (R-02, R-04), and five Medium risks. This distribution provides a clear
-visual indication of where immediate attention is needed, which would be useful for
+an overview of the NordKonsult risk landscape. The module provides pie chart
+visualisations grouped by the following dimensions: Risk Level, Status, Site/Location,
+Risk Source, Category, Team, Technology, Owner, Owner's Manager, and Risk Scoring
+Method. Each chart gives an immediate visual breakdown of the risk register along that
+dimension, allowing stakeholders to quickly identify concentrations of risk by team,
+location, or category.
+ 
+For the NordKonsult scenario, the Risk Level chart showed one Critical risk (R-01), two
+High risks (R-02, R-04), and five Medium risks, as shown in
+Figure~\ref{fig:simplerisk-risklevel-chart}. This distribution provides a clear visual
+indication of where immediate attention is needed, which would be useful for
 communicating risk status to management.
-
-% TODO: INSERT SCREENSHOT: Risk Dashboard overview
-% TODO: INSERT SCREENSHOT: Risks by Category report
-
-\textit{Observation:} The reporting capabilities in SimpleRisk Core are adequate for
-basic risk communication. The dashboard provides a clear overview of the risk profile,
-and reports can be filtered by various dimensions. However, the reports are limited to
-the platform's built-in formats and cannot be extensively customized. Export options
-include CSV and PDF, which are sufficient for most documentation needs. The
-visualisations are functional but basic compared to commercial GRC platforms, which
-typically offer more advanced charting, drill-down capabilities, and executive summary
-formats.
-
-% -----------------------------------------------------------------------------
-% Step 7: Compliance
-% -----------------------------------------------------------------------------
-
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{report_risk_level.png}
+    \caption{Risk Level distribution for the NordKonsult scenario in SimpleRisk Core}
+    \label{fig:simplerisk-risklevel-chart}
+\end{figure}
+ 
+The Category chart, shown in Figure~\ref{fig:simplerisk-category-chart}, illustrates
+how the eight risks are distributed across the five assigned categories. Technical
+Vulnerability Management accounts for three risks, Access Management for two, and
+Sensitive Data Management, Physical Security, and Policy and Procedure each for one.
+This breakdown is useful for identifying which areas of the organisation's security
+posture require the most attention.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{report_category.png}
+    \caption{Risk distribution by Category for the NordKonsult scenario in SimpleRisk Core}
+    \label{fig:simplerisk-category-chart}
+\end{figure}
+ 
+\textit{Observation:} The reporting module in SimpleRisk Core covers a wide range of
+grouping dimensions, giving risk managers a practical set of views for communicating
+the risk landscape to different audiences. The inclusion of Owner, Team, and
+Owner's Manager dimensions is particularly useful for accountability reporting in
+organisations with defined responsibility structures. However, all visualisations are
+pie charts, which limits the ability to communicate trends over time or compare
+before-and-after states following mitigation. The module does not provide a dedicated
+risk heat map or matrix view, which is a common expectation in risk management
+reporting. Export options include CSV and PDF, which are sufficient for most
+documentation needs, but the reports cannot be customised beyond the built-in
+grouping dimensions.
+ 
 \paragraph{Compliance Module.}
-The Compliance module was briefly examined to assess whether it could support ongoing
-control monitoring for NordKonsult. The module allows users to initiate compliance
-audits against defined frameworks and to record whether individual controls are
-implemented, partially implemented, or not implemented.
+The Compliance module in SimpleRisk is organised into four pages: Define Tests,
+Initiate Audits, Active Audits, and Past Audits. Together these pages implement a
+structured audit lifecycle for validating the effectiveness of defined controls.
+ 
+\textit{Define Tests} is where compliance tests are created at the individual control
+level. Each test is defined using the following fields: Test Name (required), Tester,
+Additional Stakeholders, Team(s), Test Frequency (in days), Last Test Date,
+Automatically Initiate Audit, Audit Initiation Offset, Objective, Test Steps,
+Approximate Time, and Expected Results. The test acts as a reusable template describing
+how the control should be verified and how often.
+ 
+For the NordKonsult scenario, tests were defined for two controls: C-01a (MFA on
+Microsoft 365) and C-01b (Phishing Awareness Training). Both tests were assigned a
+frequency of 90 days, reflecting the quarterly verification cycle appropriate for these
+controls.
+ 
+\textit{Initiate Audits} displays all frameworks that have at least one control with a
+defined test. The page presents a three-level hierarchy: framework, control, and
+individual test. Audits can be initiated at any of these three levels, allowing
+organisations to run a full framework audit annually while testing specific high-priority
+controls more frequently. Figure~\ref{fig:simplerisk-initiate-audits} shows the
+NordKonsult Controls framework expanded to display both controls and their associated
+tests, each with a 90-day frequency and a calculated next audit date.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{initiate_audits.png}
+    \caption{Initiate Audits page showing the NordKonsult Controls framework with
+             two controls and their associated tests}
+    \label{fig:simplerisk-initiate-audits}
+\end{figure}
 
-For the purposes of this evaluation, a compliance test was initiated against the custom
-``NordKonsult Controls'' framework. All controls were marked as ``Not Implemented'',
-reflecting the pre-treatment state of the scenario. This provides a baseline against
-which future compliance status could be tracked.
 
-% TODO: INSERT SCREENSHOT: Compliance > Active Audits showing the audit
-
-\textit{Observation:} The compliance module adds useful governance functionality,
-particularly for organizations that need to demonstrate control implementation status
-over time. However, for a small organization like NordKonsult, the overhead of
-maintaining compliance audits may outweigh the benefits unless the organization is
-subject to specific regulatory requirements. The module does not include built-in
-support for Norwegian-specific frameworks such as NSM's
-\textit{Grunnprinsipper for IKT-sikkerhet}, though these could be created manually.
-
+During the evaluation, initiating an audit required multiple attempts before entries
+appeared in Active Audits. This behaviour was not reproducible from a single click on
+the Initiate Test or Initiate Control Audit buttons and may represent a bug in the
+evaluated version (20260302-001).
+ 
+\textit{Active Audits} lists all audits currently in progress. Each entry displays the
+Test Name, Test Frequency, Tester, Objective, Control Name, Framework Name, Tags,
+Status, Test Date, Last Audit Date, Next Audit Date, and Test Result, with filter
+dropdowns on each column. Clicking an entry opens the audit detail page, shown in
+Figure~\ref{fig:simplerisk-active-audit}, where the tester can record a summary,
+attach supporting documentation, set the Audit Status, and record a Test Result of
+Pass, Fail, or Inconclusive. The full control definition is also displayed on this
+page for reference, including the control description, class, phase, priority, and
+mapped framework entry.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{active_audit_detail.png}
+    \caption{Active audit detail page for C-01b (Phishing Awareness Training), showing
+             test fields and linked control details}
+    \label{fig:simplerisk-active-audit}
+\end{figure}
+ 
+Once the Audit Status is set to Closed and a Test Result is recorded, the entry moves
+to \textit{Past Audits}, shown in Figure~\ref{fig:simplerisk-past-audits}. Completed
+audits are colour-coded by result and can be filtered by test name, framework, control,
+result, and date. A Reopen option is available for audits that need to be revisited.
+ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{past_audits.png}
+    \caption{Past Audits page showing a completed audit for C-01a (MFA on Microsoft
+             365) with a Pass result}
+    \label{fig:simplerisk-past-audits}
+\end{figure}
+ 
+\textit{Observation:} The compliance module implements a complete audit lifecycle that
+goes meaningfully beyond simple pass/fail control tracking. The separation of test
+definition, audit initiation, active management, and historical review into four
+distinct pages reflects a mature workflow design. The ability to attach evidence,
+record test steps and results, and filter past audits by multiple dimensions supports
+both internal governance and external audit readiness. For a small organisation like
+NordKonsult, the overhead of defining tests for all controls may be considerable, but
+the module scales well once the initial setup is complete. The audit initiation
+behaviour observed during this evaluation, requiring multiple attempts before audits
+appeared in the Active Audits page, raises a reliability concern that would need to be
+investigated before the module could be relied upon in a production environment. Email
+notifications for upcoming audits are documented as a feature of the platform but
+require a paid add-on, which limits the automation capability of the Core tier.
+ 
 % -----------------------------------------------------------------------------
 % Summary
 % -----------------------------------------------------------------------------
-
+ 
 \paragraph{Summary.}
-Table~\ref{tab:simplerisk-summary} provides a summary of the key observations from the
-NordKonsult scenario walkthrough in SimpleRisk Core.
+SimpleRisk Core provides a solid foundation for organisations establishing a structured
+risk management programme. Its qualitative risk scoring, configurable workflows, and
+compliance audit lifecycle cover the core requirements of the Fase 3 evaluation criteria,
+with the Planning Strategy options showing notable alignment with ISO/IEC 27005 and NIST
+RMF treatment strategies. The platform's strongest areas are its risk register workflow,
+control and governance management, and the breadth of its compliance framework support
+via the Compliance Forge SCF.
+ 
+The tool's main limitations in the Core tier are the absence of built-in threat
+catalogues, the lack of native integrations with SIEM, CMDB, or ticketing systems, and
+the restriction of automation features such as audit notifications behind paid add-ons.
+Quantitative risk analysis in the style of FAIR is not supported. Visualisation is
+limited to basic pie charts, with no risk matrix or trend analysis available.
+ 
+The evaluation also identified a recurring pattern of discrepancies between the
+platform's official documentation and its actual behaviour, including fields that behave
+differently than documented and features present in the platform that are absent from
+the documentation entirely. The per-page documentation feature, while well-intentioned,
+is only partially implemented in the evaluated version. These observations reinforce the
+value of hands-on evaluation over documentation review alone, and are themselves
+relevant findings for the comparative analysis in Chapter~\ref{chap:comparative}.
+% TODO: Make ref point to correct chapter 
 
-\begin{table}[ht]
+\subsection{OpenRMF OSS} % TODO: Add screenshots throughout
+\subsubsection{Tool Overview}
+ 
+OpenRMF OSS is a free, open-source web application designed to support the
+implementation of the NIST Risk Management Framework (RMF) in U.S. Department of
+Defense (DoD) environments. The tool addresses a specific and well-defined problem:
+the management of DISA STIG checklists, SCAP scan results, and Nessus/ACAS patch
+data is traditionally handled through a combination of the DISA STIG Viewer, manual
+spreadsheets, and email. OpenRMF OSS replaces this workflow with a centralised,
+browser-based interface that consolidates assessment data across systems and automates
+the generation of key RMF artefacts.
+ 
+The application is built on a microservices architecture using Docker, MongoDB, and
+the NATS messaging system, with authentication and authorisation handled through
+Keycloak using OpenID Connect and role-based access control. This design allows the
+tool to be deployed locally, on a server, in a virtualised environment, or in the
+cloud. However, the multi-component nature of the stack means that initial setup
+requires a meaningful level of technical expertise compared to tools distributed
+as a single VM image.
+ 
+OpenRMF OSS is explicitly scoped to the DoD RMF process and the associated US
+federal compliance ecosystem. It is not designed as a general-purpose information
+security risk management tool and does not support the broader range of risk
+management methodologies and organisational contexts relevant to European or
+Norwegian environments. This scope should be understood as a defining
+characteristic of the tool rather than a limitation in isolation.
+ 
+Table~\ref{tab:openrmf-overview} summarises the key properties of OpenRMF OSS.
+ 
+\begin{table}[H]
 \centering
-\caption{Summary of observations -- SimpleRisk Core with NordKonsult scenario}
-\label{tab:simplerisk-summary}
-\small
-\begin{tabular}{p{3.5cm}p{9cm}}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{4.5cm}|p{9cm}|}
 \hline
-\textbf{Aspect} & \textbf{Observation} \\
+\textbf{Property} & \textbf{Description} \\
 \hline
-Risk scoring      & Classic scoring aligns well with a qualitative $5 \times 5$ approach.
-                    No support for quantitative (FAIR-style) analysis.
-                    Custom risk levels require manual configuration. \\
-Asset management  & Basic but functional. No asset categorisation or dependency modelling. \\
-Control management & Well-structured with framework support. Bundled SCF library is
-                    comprehensive but may overwhelm small organisations.
-                    No Norwegian-specific framework templates. \\
-Risk and asset linking & Supported and straightforward. Enables traceability from
-                    risk to asset. \\
-Mitigation planning & Clear workflow with strategy differentiation. No automated
-                    progress tracking or notifications in Core version. \\
-Reporting         & Adequate for basic risk communication. Limited customisation.
-                    Export to CSV and PDF available. \\
-Compliance        & Useful for governance-focused organisations. May add unnecessary
-                    overhead for very small organisations. \\
-Suitability for SMEs & Low barrier to entry (free, open-source, VM-based deployment).
-                    Sufficient for foundational risk management. May require
-                    supplementary tools for advanced analysis or regulatory alignment. \\
+\multicolumn{2}{|l|}{\textit{Basic Properties}} \\
+\hline
+Version (evaluated) & 1.14 \\
+\hline
+License & Free to use and redistribute; commercial resale not permitted \\
+\hline
+Deployment & Docker Compose (local, server, VM, or cloud); podman also supported \\
+\hline
+Interface type & Web-based GUI; no CLI required for normal use; Keycloak setup required at deployment \\
+\hline
+Target organisation size & U.S. DoD and federal government programmes undergoing the RMF/ATO process \\
+\hline
+\multicolumn{2}{|l|}{\textit{Methodology Support}} \\
+\hline
+NIST RMF & Direct; the tool is purpose-built around the NIST RMF process and NIST SP 800-53 controls \\
+\hline
+ISO/IEC 27005 & Not supported \\
+\hline
+FAIR & Not supported \\
+\hline
+OCTAVE & Not supported \\
+\hline
+EBIOS & Not supported \\
+\hline
+\multicolumn{2}{|l|}{\textit{Key Findings}} \\
+\hline
+Risk analysis & Compliance-based; risks are derived from STIG findings categorised as Category I, II, or III; no qualitative or quantitative risk scoring \\
+\hline
+Asset management & Systems are organised into System Packages representing ATO boundaries; individual assets are not managed independently \\
+\hline
+Threat / vulnerability catalogues & DISA STIGs serve as the de facto vulnerability catalogue; SCAP and Nessus data provide patch-level vulnerability tracking \\
+\hline
+Workflow and traceability & Structured checklist and scan upload workflow; audit log tracks who edited checklists and when \\
+\hline
+Reporting & Automated generation of Test Plan Summary and POA\&M in Excel format; compliance report against NIST 800-53 controls; twelve predefined reports in the Reports module \\
+\hline
+Integrations & Designed for DISA STIG, SCAP, and Nessus/ACAS ecosystem; no general-purpose SIEM or ticketing integrations \\
+\hline
+Suitability outside DoD context & Very limited; the tool's data inputs, terminology, and outputs are specific to the US federal compliance ecosystem \\
 \hline
 \end{tabular}
+\caption{OpenRMF OSS -- key properties overview}
+\label{tab:openrmf-overview}
 \end{table}
+ 
+\subsubsection{Installation}
+
+OpenRMF OSS is distributed as a Docker Compose stack rather than as a
+pre-built virtual machine image. The evaluated instance was deployed using the
+official Docker Compose stack from the v1.14 release archive, downloaded from
+the project's GitHub repository. The stack was hosted on a dedicated Windows
+laptop running Docker Desktop with WSL2, and accessed remotely via browser
+from a separate machine on the same network. The host machine's network IP
+was configured in the \texttt{.env} file prior to launching the stack, and
+Keycloak was initialised using the bundled Linux setup script executed through
+a WSL2 terminal. The full stack, including all dependencies, was brought up
+with a single \texttt{docker compose up -d} command.
+
+\textit{Observation:} While the final \texttt{docker compose up -d} command is
+simple, the deployment has markedly more prerequisites than the VM-image
+distribution used by SimpleRisk Core. The evaluator is expected to be
+comfortable with Docker, WSL2, and Keycloak concepts before the tool can be
+used at all; user administration is delegated entirely to Keycloak's admin
+console rather than being handled natively in OpenRMF, meaning an
+administrator must learn two systems instead of one. For organisations
+without in-house technical operations capability, this deployment model is a
+meaningful barrier, and the absence of a pre-built VM image or hosted demo
+excludes the tool from the same accessibility tier as SimpleRisk Core.
+
+\subsubsection{Platform Modules}
+\label{sec:openrmf-modules}
+
+OpenRMF OSS organises its functionality into eight main pages, accessible
+from the left-hand sidebar. Unlike SimpleRisk Core, the platform does not
+require a separate scenario walkthrough to illustrate its workflow; the
+checklist-centric nature of the tool means that module behaviour is best
+described through a single worked example. For this purpose, the Microsoft
+Windows 11 STIG (Version 2, Release 7) was uploaded to a test system package
+and used to explore each module.
+
+\paragraph{Dashboard.}
+The Dashboard displays aggregate counts at the top (System Packages,
+Checklists, and Templates) alongside two interactive widgets: one for Nessus
+and ACAS patch-scan data and one for SCAP scans and checklist findings. Each
+widget requires a System Package to be selected from a dropdown before any
+content appears. After uploading the Windows 11 STIG to the test system
+package, the SCAP Scans and Checklists widget populated with High, Medium,
+and Low vulnerability tiles reflecting the current state of the uploaded
+checklist.
+
+\paragraph{System Packages.}
+A System Package represents an ATO boundary — the unit of compliance
+scrutiny in the NIST RMF process. Creating a package requires only a title
+and description, with an optional Nessus/ACAS file upload at creation time.
+Once created, the System Package page provides a central workspace that
+links to all associated checklists, displays a system-level status chart,
+summarises patch vulnerabilities, and exposes buttons for generating a Test
+Plan and a Plan of Action and Milestones (POA\&M). This design reinforces
+the tool's orientation around the ATO process: the system package is the
+primary organisational container, not the individual asset.
+
+\paragraph{Test Plan Summary and POA\&M Generation.}
+The System Package page exposes two one-click report generators that produce
+Microsoft Excel deliverables intended to serve as formal RMF artefacts.
+The Test Plan Summary is a lightweight pre-assessment document: for the
+Windows~11 test package, it produced a six-row file containing a header block
+and a single-row summary table counting only the currently Open findings
+(1~CAT~I, 3~CAT~II, 0~CAT~III, 4~total). The file's usefulness scales with the
+number of checklists and hosts in the System Package; against a single test
+checklist its content is minimal.
+
+The POA\&M export is substantially more substantive. The generated file
+reproduces the layout of the DoD Plan of Action and Milestones template,
+with a 22-column finding table covering vulnerability description, security
+control acronym, source STIG, status, severity, and fields for remediation
+planning including Scheduled Completion Date, Resources Required, Milestones,
+and Residual Risk Level. For the Windows~11 test package the export contained
+254 finding rows with NIST~800-53 control mappings inlined per row
+(for example, \texttt{CM-6 b} and \texttt{SC-28 (1)}), drawn directly from
+the CCI data carried in the original DISA content.
+
+\textit{Observation:} A subtle but important design decision is reflected in
+how the POA\&M selects rows. The test checklist had 258 rules; four were
+marked Open, three as Not a Finding, and one as Not Applicable during the
+evaluation, leaving 250 findings in the default Not Reviewed state. The
+POA\&M contained 254 rows, meaning all Open \textit{and} all Not Reviewed
+findings were included with status ``Ongoing''. The Test Plan Summary, by
+contrast, counted only the four Open findings. This asymmetry reflects
+RMF practice, where unreviewed items are treated as outstanding work, but
+it is worth understanding before the POA\&M is shared with stakeholders;
+the document is better read as ``remaining work to be cleared'' than as
+``confirmed open findings''. The column structure is also specific to US
+federal compliance, with fields such as \textit{AP Acronym}, \textit{OMB
+Project ID}, and \textit{DoD Component} that have no equivalent in
+Norwegian or European regulatory contexts.
+
+\paragraph{Checklists.}
+Checklists are the operational core of OpenRMF and are uploaded either as
+DISA STIG \texttt{.CKL} files or as SCAP scan \texttt{.XML} files, with up
+to ten files per upload. Once processed, a checklist is presented through a
+layout combining asset metadata, a four-status summary table (Open, Not a
+Finding, Not Applicable, Not Reviewed) broken down by CAT~I, CAT~II, and
+CAT~III severity, a vulnerability filter, and three linked panels:
+Vulnerability IDs (the full list of rules), Vulnerability Details (rule
+description, Check Content, Fix Text, and CCI-to-NIST 800-53 mappings), and
+Status \& Comments (the editing interface).
+
+The uploaded Windows 11 STIG contained 258 rules, automatically categorised
+on upload as 28~CAT~I, 213~CAT~II, and 17~CAT~III, with every rule initially
+set to \textit{Not Reviewed}. Marking a finding with a different status
+(Open, Not a Finding, or Not Applicable) updates both the colour-coded
+vulnerability list and all three summary panels immediately, without a page
+reload. Each finding also exposes NIST SP 800-53 control mappings (Rev.~4
+and Rev.~5) directly in the detail pane, along with the corresponding CCI
+references from the underlying DISA content.
+
+\paragraph{Compliance.}
+The Compliance module generates a NIST 800-53 control coverage view from
+all checklists within a selected System Package. The user selects a System
+Package, sets a System Impact Level (Low, Moderate, or High) corresponding
+to the FIPS~199 categorisation levels, optionally flags the system as
+containing PII, and clicks Generate. For the Windows~11 test package, the
+summary returned 16 NIST 800-53 control families (AC, AT, AU, CA, CM, CP,
+IA, IR, MA, MP, PE, PL, PM, PS, RA, SA, SC) with each family colour-coded
+to indicate whether any mapped findings were Open, Not Reviewed, or fully
+satisfied. The Details view expanded this into a table of 191 individual
+controls, filterable by family. The full listing can be exported to
+Microsoft Excel, producing a file with the same columns (Control, Title,
+Checklist, Status) and colour coding as the on-screen view.
+
+\paragraph{Templates.}
+OpenRMF OSS ships with 629 DISA-provided templates representing the public
+portion of the STIG library. These are available as starting points for new
+checklists without requiring manual download from the DISA website.
+Organisations may also upload their own templates via the Upload page for
+reuse across future system packages.
+
+\paragraph{Reports.}
+The Reports module offers twelve predefined reports, including a System
+Package Pie Chart, Host Vulnerability Report, Checklist Dashboard, and RMF
+controls listing. Reports are generated on demand and displayed inline. The
+Pie Chart report, tested against the Win11 test package, produced a
+distribution of findings by category and status; the Host Vulnerability
+Report supported partial Vuln ID search (for example, \texttt{V-2533})
+and returned a table of matching findings with host, severity, status, and
+type columns.
+
+\paragraph{Upload.}
+The Upload module is split into two workflows: one for uploading
+\texttt{.CKL} or SCAP \texttt{.XML} files as checklists against an existing
+System Package, and one for uploading \texttt{.CKL} files as reusable
+templates. Each workflow accepts up to ten files per upload, and the
+inline help text explicitly notes that DISA SCAP, OpenSCAP, and Nessus SCAP
+output formats are all supported.
+
+\paragraph{Audit, Metrics, and Users.}
+The Audit page logs every configuration and data change across the platform.
+For the Windows~11 test session, ten audit entries were generated: one for
+system package creation, one for checklist upload, and one per vulnerability
+status change. Each entry records a timestamp, originating API component
+(Save API, Upload API), action description, username, and user ID, and can
+be expanded to reveal the full HTTP method and URL, the affected object
+IDs, and a unique audit identifier. The audit page supports keyword search
+and column sorting but no structured filtering.
+
+The Metrics page redirects to a Grafana interface. In the default
+deployment, logging in to Grafana was not possible without further
+configuration, suggesting that the integration requires additional Keycloak
+or Grafana setup beyond the standard installation. The Users page likewise
+redirects to Keycloak's administrative console, confirming that user and
+role management is handled externally to the OpenRMF application itself.
+
+\textit{Observation:} OpenRMF's workflow is fundamentally different from
+SimpleRisk's. Where SimpleRisk treats risks as free-form register entries
+scored by the analyst, OpenRMF ingests structured DISA content and derives
+findings, severities, and control mappings automatically from that content.
+This shifts the analyst's work from risk authoring to finding triage: the
+rules are already defined, categorised, and mapped; the analyst's job is to
+determine whether each rule is met in the target system. The immediacy of
+the UI reflects this — status changes propagate across the summary tables,
+severity breakdowns, and dashboards without page reloads, encouraging a
+fast triage cadence across a large rule set.
+
+\textit{Observation:} The Compliance Summary view exposes a subtle but
+important characteristic of STIG-to-NIST mapping: a single Open finding can
+mark multiple control families as non-compliant because individual STIG
+rules typically map to several CCIs, each of which maps to a NIST control.
+In the Windows~11 test, four Open findings caused eight control families
+to be flagged at the summary level. This means the compliance view should
+be read as ``at least one finding in this family requires attention''
+rather than as a direct count of open issues, which is a distinction worth
+understanding before presenting the output to non-technical stakeholders.
+
+\subsubsection{Standards and Framework Support}
+OpenRMF OSS is the most narrowly scoped tool evaluated in this thesis in terms of
+framework alignment. It is purpose-built for the NIST Risk Management Framework and
+the associated US Department of Defense compliance ecosystem, and this alignment is
+direct rather than aspirational. The tool's entire workflow, from data input through
+to output artefacts, is structured around NIST SP 800-53 controls, DISA STIGs, and
+the ATO (Authority to Operate) process.
+ 
+This means that in the single area it targets, NIST RMF support, OpenRMF OSS
+outperforms general-purpose tools such as SimpleRisk Core. Compliance reporting
+against NIST 800-53 is automated rather than manual, POA\&M and RAR generation
+require a single click rather than analyst effort, and the STIG and SCAP data inputs
+are natively understood by the tool rather than requiring manual transcription.
+ 
+However, outside of this context, the tool offers no meaningful support for any of
+the other frameworks relevant to this evaluation. ISO/IEC 27005, OCTAVE, FAIR, and
+EBIOS are not referenced in the tool's design, documentation, or outputs. The
+qualitative risk assessment processes described by these frameworks, involving asset
+identification, threat and vulnerability analysis, and risk treatment planning, are
+not supported. Risk in OpenRMF OSS is expressed through STIG finding categories
+(Category I, II, III) rather than through a likelihood/impact model, making the
+tool's risk representation incompatible with the evaluation criteria used for the
+other tools in this thesis.
+ 
+For organisations operating outside the US DoD context, including Norwegian
+enterprises subject to NSM guidance, ISO/IEC 27001, or GDPR, OpenRMF OSS is not
+a viable risk management tool. Its inclusion in this thesis is valuable precisely
+because it illustrates the contrast between a tool designed for a specific
+compliance-driven framework and the more general-purpose tools that form the bulk
+of the evaluation. 
+
+\subsubsection{Scope of Evaluation}
+\label{sec:openrmf-no-scenario}
+
+As described in Section~\ref{sec:test-scenarios}, each test scenario is applied in
+depth to a single selected tool. OpenRMF OSS was not among the tools selected
+for a scenario walkthrough; its evaluation is therefore based on hands-on
+exploration of the platform's modules, a test deployment using the Windows~11
+STIG, and assessment against the criteria set defined in
+Section SECTION. % TODO: adjust label
+
+% TODO: Maybe delete following paragraph?
+It is worth noting that the NordKonsult AS scenario used for SimpleRisk Core
+would in any case have been a poor structural fit for OpenRMF. The scenario's
+risk model — qualitative risks assessed by likelihood and impact, tied to
+organisational assets such as employee laptops and cloud services — has no
+direct representation in a tool that expresses risk exclusively through DISA
+STIG findings and NIST SP~800-53 control mappings. This structural
+incompatibility is itself a finding that reinforces the scope argument made
+in Section SECTION, % TODO: adjust label
+OpenRMF's data model is tightly coupled to the US DoD compliance ecosystem
+and does not translate to the qualitative, asset-centric risk workflows
+typical of Norwegian SMEs.
+
+\subsubsection{Summary}
+
+OpenRMF OSS delivers a focused, technically mature implementation of the
+NIST Risk Management Framework for organisations operating within the DISA
+STIG and NIST SP 800-53 ecosystem. Within this narrow scope, it performs
+work that general-purpose GRC platforms cannot: STIG checklists are ingested
+directly from DISA content, findings are automatically categorised by
+severity, and NIST 800-53 control coverage is derived from CCI mappings
+already embedded in the source material. The UI supports rapid finding
+triage with live-updating summaries, and the Compliance and Reports modules
+generate audit-ready Excel exports without analyst intervention. The audit
+log is comprehensive, capturing every configuration and data change with
+sufficient detail to support external review.
+
+The tool's limitations follow directly from its scope. Risk is expressed
+only through STIG finding categories, with no support for likelihood/impact
+scoring, quantitative modelling, or qualitative risk authoring. Asset
+management is absent: the organisational unit is the System Package (an ATO
+boundary), not the individual asset. Frameworks other than NIST RMF
+(ISO/IEC~27005, FAIR, OCTAVE, EBIOS) are not represented in the tool's
+workflow or outputs. Deployment is gated by familiarity with Docker Compose,
+WSL2, and Keycloak, and the Metrics integration did not function in the
+default deployment used for this evaluation.
+
+For organisations operating outside the US federal compliance context —
+including Norwegian public and private sector organisations subject to NSM
+guidance, ISO/IEC~27001, or GDPR — OpenRMF OSS is not a viable
+general-purpose risk management tool. Its inclusion in this thesis is
+valuable as a point of contrast: it demonstrates what a compliance-driven,
+framework-specific tool can achieve in its target domain, and by the same
+token illustrates the trade-off that specialisation imposes on broader
+applicability.
+
 
 \subsection{MONARC}
 
@@ -756,33 +1253,17 @@ Target organisation size & Small to large organisations. suited for multi-framew
 \end{table}
 % TODO
 
+\subsubsection{Standards and Framework support}
+% TODO
 
+\subsection{Tool 5}
+\subsubsection{Tool Overview}
+% TODO
 
 \subsubsection{Standards and Framework support}
 % TODO
 
 \subsection{Tool 6}
-\subsubsection{Tool Overview}
-% TODO
-
-\subsubsection{Standards and Framework support}
-% TODO
-
-\subsection{Tool 7}
-\subsubsection{Tool Overview}
-% TODO
-
-\subsubsection{Standards and Framework support}
-% TODO
-
-\subsection{Tool 8}
-\subsubsection{Tool Overview}
-% TODO
-
-\subsubsection{Standards and Framework support}
-% TODO
-
-\subsection{Tool 9}
 \subsubsection{Tool Overview}
 % TODO
 

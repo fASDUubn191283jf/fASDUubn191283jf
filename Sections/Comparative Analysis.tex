@@ -1,21 +1,188 @@
 \section{Comparative Analysis}
+\label{chap:comparative}
+
+This chapter synthesises the findings from the individual tool evaluations in
+Chapter~\ref{chap:practical-evaluation} into a structured comparison. The
+comparison is organised around three questions drawn from the Fase~3 task
+specification: how the tools compare against the evaluation criteria
+(Section~\ref{sec:eval-criteria-comparison}), how well they align with
+established framework requirements (Section~\ref{sec:framework-alignment}),
+and which tools are best suited to which organisational contexts
+(Section~\ref{sec:org-suitability}).
+
 \subsection{Comparison Against Evaluation Criteria}
-% TODO
+\label{sec:eval-criteria-comparison}
 
-\subsection{Open-source vs Commercial Tools}
-% TODO
+This section compares the evaluated tools against the criteria set defined in
+Section SECTION-REF, % TODO: adjust label to match 
+which in turn is derived the frameworks covered in the literature review (ISO/IEC~27005,
+NIST~SP~800-37, OCTAVE Allegro, FAIR, and ENISA guidance). The criteria are
+grouped into five categories: methodology support, functionality,
+integrations and reporting, user experience, and administrative factors.
+Each category is presented as a separate table to keep the comparison
+readable and to allow targeted discussion of findings.
 
-\subsection{Alignment with Framework Requirements}
-% TODO
+Cell values use the following convention: \textbf{Yes} indicates full
+support, \textbf{Partial} indicates the capability is present but limited or
+requires manual configuration, \textbf{No} indicates the capability is
+absent, and \textbf{N/A} indicates the criterion does not apply to the
+tool's scope. Where a simple yes/no answer would be misleading, a short
+descriptive phrase is used instead.
 
-\subsection{Suitability for Different Organizational Contexts}
-% TODO
+% =============================================================================
+% Table 1: Methodology Support
+% =============================================================================
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\small
+\caption{Methodology and framework support across evaluated tools}
+\label{tab:comp-methodology}
+\begin{tabular}{|p{2.8cm}|p{2cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+\textbf{Tool} & \textbf{ISO/IEC 27005} & \textbf{NIST RMF} & \textbf{FAIR} & \textbf{OCTAVE} & \textbf{EBIOS} & \textbf{NSM / ENISA} \\
+\hline
+SimpleRisk Core & Partial & Partial & No & No & No & No \\
+\hline
+OpenRMF OSS    & No      & Yes     & No & No & No & No \\
+\hline
+MONARC         & & & & & & \\
+\hline
+Eramba         & & & & & & \\
+\hline
+Tool 5         & & & & & & \\
+\hline
+Tool 6         & & & & & & \\
+\hline
+Tool 7         & & & & & & \\
+\hline
+\end{tabular}
+\end{table}
 
-\subsubsection{Small and Medium-Sized Enterprises}
-% TODO
 
-\subsubsection{Large Enterprises}
-% TODO
+% =============================================================================
+% Table 2: Functionality
+% =============================================================================
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\small
+\caption{Functional capabilities across evaluated tools}
+\label{tab:comp-functionality}
+\begin{tabular}{|p{2.3cm}|p{2.2cm}|p{2.2cm}|p{2cm}|p{1.8cm}|p{1.5cm}|p{2cm}|}
+\hline
+\textbf{Tool} & \textbf{Asset mgmt.} & \textbf{Threat catalogue} & \textbf{Vuln. mapping} & \textbf{Qualitative analysis} & \textbf{Quant. analysis} & \textbf{Audit trail} \\
+\hline
+SimpleRisk Core & Basic asset register & Manual; no built-in catalogue & Via CVE (NVD auto-populate) & Yes (6 methods) & No & Partial; per-risk history \\
+\hline
+OpenRMF OSS    & System Packages only; no asset-level mgmt. & 629 DISA templates built-in & SCAP, Nessus, ACAS; CCI-to-800-53 inline & STIG CAT I--III only & No & Yes; per-change HTTP-level log \\
+\hline
+MONARC         & & & & & & \\
+\hline
+Eramba         & & & & & & \\
+\hline
+Tool 5         & & & & & & \\
+\hline
+Tool 6         & & & & & & \\
+\hline
+Tool 7         & & & & & & \\
+\hline
+\end{tabular}
+\end{table}
 
-\subsubsection{Public Sector}
-% TODO
+% =============================================================================
+% Table 3: Integrations and Reporting
+% =============================================================================
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\small
+\caption{Integrations and reporting capabilities across evaluated tools}
+\label{tab:comp-integrations}
+\begin{tabular}{|p{2.3cm}|p{1.5cm}|p{1.2cm}|p{1.2cm}|p{1.5cm}|p{4cm}|}
+\hline
+\textbf{Tool} & \textbf{REST API} & \textbf{SIEM} & \textbf{CMDB} & \textbf{Ticketing} & \textbf{Report export} \\
+\hline
+SimpleRisk Core & Yes & No & No & No & PDF, CSV; pie charts only; 10 grouping dimensions \\
+\hline
+OpenRMF OSS    & Yes (REST) & No & No & No & Excel (Test Plan Summary, DoD POA\&M, 800-53 compliance); 12 predefined reports \\
+\hline
+MONARC         & & & & & \\
+\hline
+Eramba         & & & & & \\
+\hline
+Tool 5         & & & & & \\
+\hline
+Tool 6         & & & & & \\
+\hline
+Tool 7         & & & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+% =============================================================================
+% Table 4: User Experience
+% =============================================================================
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\small
+\caption{User experience across evaluated tools}
+\label{tab:comp-ux}
+\begin{tabular}{|p{2.3cm}|p{2.8cm}|p{2.8cm}|p{3cm}|p{2.8cm}|}
+\hline
+\textbf{Tool} & \textbf{Interface} & \textbf{Learning curve} & \textbf{Visualisation} & \textbf{Accessibility} \\
+\hline
+SimpleRisk Core & Web GUI; native user admin & Low to moderate & Pie charts across 10 dimensions; no heat map & VM image; no CLI required \\
+\hline
+OpenRMF OSS    & Web GUI; Keycloak for user admin & High (Docker, WSL2, Keycloak) & Live-updating severity, category, and score breakdowns; 16 NIST control-family summary; 12 reports & Docker Compose multi-container; Grafana module non-functional in default deployment \\
+\hline
+MONARC         & & & & \\
+\hline
+Eramba         & & & & \\
+\hline
+Tool 5         & & & & \\
+\hline
+Tool 6         & & & & \\
+\hline
+Tool 7         & & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+\noindent\textit{Notes:} OpenRMF's live-updating visualisations on the
+checklist view are a notable UX strength not shared by SimpleRisk, which
+requires navigation to the Reporting module to see aggregate views. Against
+this, OpenRMF's learning curve includes two administrative systems
+(OpenRMF itself and Keycloak) rather than one.
+
+% =============================================================================
+% Table 5: Administrative Factors
+% =============================================================================
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\small
+\caption{Administrative factors across evaluated tools}
+\label{tab:comp-admin}
+\begin{tabular}{|p{2.3cm}|p{2.8cm}|p{2.8cm}|p{2.5cm}|p{2.8cm}|}
+\hline
+\textbf{Tool} & \textbf{License} & \textbf{Deployment} & \textbf{Documentation} & \textbf{Community} \\
+\hline
+SimpleRisk Core & Open-source Core; paid add-ons & Self-hosted (VM, Docker, LAMP) & Partial; discrepancies observed vs.\ platform & Active; commercial backing \\
+\hline
+OpenRMF OSS    & Free; commercial resale not permitted & Docker Compose (self-hosted) & GitHub-based; inline help on some pages & Smaller; DoD/RMF-focused \\
+\hline
+MONARC         & & & & \\
+\hline
+Eramba         & & & & \\
+\hline
+Tool 5         & & & & \\
+\hline
+Tool 6         & & & & \\
+\hline
+Tool 7         & & & & \\
+\hline
+\end{tabular}
+\end{table}

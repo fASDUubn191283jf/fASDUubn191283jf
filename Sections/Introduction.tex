@@ -1,51 +1,134 @@
 \section{Introduction}
-Information security risk management is a central part of modern management and control systems in businesses. Standards such as ISO/IEC 27005 and frameworks such as NIST SP 800-37 describe structured processes for identifying, analyzing, and treating risk.
 
-At the same time, businesses have become increasingly dependent on digital systems, increasing both complexity and vulnerability. This has made systematic risk management a critical part of both operational operations and strategic management.
+Information security risk management is a central component of modern
+organizational governance. Standards such as ISO/IEC~27005 and frameworks
+such as NIST~SP~800-37 describe structured processes for identifying,
+analysing, and treating risk, and regulatory and advisory bodies including
+ENISA and the Norwegian National Security Authority (NSM) provide additional
+guidance on how such processes should be implemented in practice. At the
+same time, organisations have become increasingly dependent on digital
+systems, and the growing complexity of those systems has made systematic
+risk management a practical necessity rather than a purely administrative
+exercise.
 
-In this context, it is relevant to examine the extent to which existing risk management tools support requirements for traceability, documentation, analysis, and decision-making, as well as what strengths and limitations can be identified when using such tools.
+In this environment, the tools organisations use to support risk management
+vary widely. They range from general-purpose spreadsheets used to maintain
+ad-hoc risk registers, through single-purpose visual techniques such as
+bowtie analysis, to full Governance, Risk, and Compliance (GRC) platforms
+that integrate risk registers, control frameworks, compliance testing, and
+reporting. The appropriateness of any given tool depends on the size and
+maturity of the organisation, the frameworks it must align with, and the
+resources available to configure and maintain the tool. Despite the
+importance of this choice, there is limited comparative literature
+evaluating how well widely available tools actually support the requirements
+set out by established risk management frameworks.
 
-To understand how risk management can be operationalized in practice, it is appropriate to distinguish between methodology and tool support. The next section explains what risk management entails and what types of tools can be used to support the process
 \subsection{Project background}
-% TODO
-Risk management involves being able to; identify threats and vulnerabilities, assess probability and consequence, and implement measures to reduce risk. Methodology describes how the process should be carried out, tools support the implementation itself, and contribute to traceability and consistency. 
 
-There are various tools that can be used to achieve this:
-\begin{itemize}
-    \item Simple tools that can be used: excel or some other similar spreadsheet program. These provide basic support, but are more limited in traceability
-
-    \item Open source tools: For example MONARC, Risk BowTie (Legg til de vi har) offer structured methodological support at no cost.
-
-    \item Commercial GRC solutions: (Legg til de vi har fått tak i) provide many functionalities, can be seamlessly integrated into the system, and provide advanced reporting.
-\end{itemize}
-The choice of these available solutions will be influenced by the size of the business, the need for documentation and analysis. The next steps are to assess whether these available tools actually meet the requirements of ISO 27005, NIST RMF, and the ENISA recommendations.
+This thesis was written as a Bachelor project at the Department of
+Information Security and Communication Technology at NTNU, based on a
+problem description supplied by the academic supervisor. The original
+problem description covered both open-source and commercial risk management
+tools. During the early phase of the project, the scope was narrowed to
+\textit{open-source tools only}, a decision driven by practical
+considerations of accessibility: open-source tools can be deployed,
+configured, and tested in a controlled environment within the constraints
+of a bachelor project, whereas commercial GRC platforms typically require
+procurement, licensing agreements, or vendor-mediated demonstrations that
+fall outside the resources available. The rationale for this scope change
+is developed further in Section~\ref{sec:project-scope}.
 
 \subsection{Project description}
-% TODO
-This project aims to evaluate different tools used for risk management within information security. We will combine theoretical analysis with established standards and frameworks based on selected tools. 
 
-The study will be organized into five phases. 
-\begin{itemize}
-    \item Phase one will be a literature review based on ENISA risk management reports, ISO/IEC 27005, NIST SP 800-73 (RMF), OCTAVE, FAIR, and other relevant publications on GRC and cyber risk quantification. This phase is to identify requirements and establish a structured set of evaluations criteria.
-
-    \item Phase two - an overview of 8-15 relevant risk management tools will be developed. The tools will consist of open source, commercial platforms, and semi-comercial or academic tools.
-    
-    \item Phase three - a structured evaluation framework will be defined. The criteria will include alignment with established risk management frameworks, functional capabilities, integration options, usability, and administrative aspects.
-
-    \item Phase four - Select four to six tools that will be used in an in-depth analysis. (hva velger vi å utføre her?)
-
-    \item Phase five - The results gained from our analysis will be used to do a comperative assesment to identify their strengths, weaknesses, and practical suitability across small and medium-sized enterprises, large enterprises, and public sector organizations. 
-\end{itemize}
- 
+This thesis evaluates a selection of open-source tools used to support
+information security risk management. The evaluation combines a structured
+criteria set, derived from established frameworks and from the guidance
+provided in ENISA and NSM publications, with hands-on assessment of each
+tool. Selected tools are subjected to in-depth walkthroughs against
+realistic organisational scenarios representing small, medium, and large or
+public-sector contexts. The resulting evidence is used to produce a
+comparative analysis that identifies strengths, limitations, and the types
+of organisational contexts in which each tool is most appropriate.
 
 \subsection{Project scope}
-% TODO
+\label{sec:project-scope}
+
+The evaluation is scoped to open-source tools for information security risk
+management. Commercial GRC platforms are out of scope, for the reasons
+noted in the project background. The thesis does not aim to develop new
+software, extend existing tools, or perform a comprehensive cost-benefit
+analysis. Factors such as licensing model, ease of use, deployment effort,
+and documentation maturity are considered as part of the evaluation, but
+the primary focus is on functional capability, alignment with recognised
+frameworks, and usability from the perspective of an organisation
+implementing structured risk management.
+
+The evaluation considers a selection of tools representative of the range
+of open-source tool support available, from lightweight visual techniques
+such as bowtie analysis through to full GRC platforms. The comparison is
+framed against the guidance of ISO/IEC~27005, NIST~SP~800-37, OCTAVE
+Allegro, FAIR, and the recommendations of ENISA and NSM, with particular
+attention to how each tool supports or constrains the requirements
+expressed by these frameworks.
 
 \subsection{Research question}
-% TODO
+\label{sec:research-question}
+
+This thesis addresses the following primary research question:
+
+\begin{quote}
+\textit{To what extent do widely available open-source information security
+risk management tools meet the requirements set out by established risk
+management frameworks, and how does their suitability vary across different
+organisational contexts?}
+\end{quote}
+
+This is supported by the following sub-questions:
+
+\begin{enumerate}
+    \item Which types of open-source risk management tools are available,
+          and how can they be categorised?
+    \item Which evaluation criteria, drawn from established frameworks and
+          advisory guidance, are appropriate for comparing such tools?
+    \item How well do the selected tools satisfy these criteria in
+          practice?
+    \item What strengths and limitations are observed when applying the
+          tools to realistic organisational scenarios?
+    \item Which tools are most appropriate for which organisational
+          contexts (small and medium-sized enterprises, large enterprises,
+          public sector)?
+\end{enumerate}
 
 \subsection{Project goals}
-% TODO
+
+The project has four primary goals:
+\begin{itemize}
+    \item To establish a structured set of evaluation criteria grounded in
+          ISO/IEC~27005, NIST~SP~800-37, OCTAVE Allegro, FAIR, and the
+          guidance provided by ENISA and NSM.
+    \item To identify and categorise a representative selection of
+          open-source risk management tools.
+    \item To evaluate each selected tool in depth against the criteria set,
+          supported by hands-on deployment and testing.
+    \item To produce a comparative analysis assessing the suitability of
+          each tool across small and medium-sized enterprises, large
+          enterprises, and public-sector organisations, and to offer
+          recommendations for practice.
+\end{itemize}
 
 \subsection{Thesis structure}
-% TODO
+
+The remainder of this thesis is structured as follows.
+Chapter~\ref{chap:theoretical-background} establishes the theoretical
+background, covering information security risk management and the
+frameworks used as the basis for the evaluation criteria.
+Chapter~\ref{chap:methodology} describes the research methodology,
+including the tool selection strategy, the derivation of the evaluation
+criteria, the evaluation approach, and the organisational scenarios used
+to support the walkthroughs. Chapter~\ref{chap:tool-overview} provides an
+overview of the tools considered and their categorisation.
+Chapter~\ref{chap:practical-evaluation} presents the practical evaluation
+of each selected tool. Chapter~\ref{chap:comparative} synthesises the
+findings into a comparative analysis organised by evaluation criteria,
+framework alignment, and organisational suitability. Chapter~\ref{chap:conclusion}
+presents the conclusions, limitations, and suggestions for further work.
